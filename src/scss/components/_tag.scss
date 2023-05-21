@@ -1,0 +1,16 @@
+.tag {
+    padding: .6rem .4rem .6rem 1rem;
+    background-color: var(--color-yellow);
+    border-radius: 6px 0 0 6px;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 500;
+    transition: border-radius .2s linear,
+        transform .2s linear;
+
+    &:hover {
+        transform: scale(1.02);
+        transform-origin: right;
+        border-radius: 14px 0 0 14px;
+    }
+}

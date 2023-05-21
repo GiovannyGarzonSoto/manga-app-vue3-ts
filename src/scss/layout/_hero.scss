@@ -1,0 +1,67 @@
+.hero{
+    width: 100%;
+    display: flex;
+    background: linear-gradient(to top, #0D0D0D 10%, #010101 100%);
+    display: flex;
+    padding: 1.6rem;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1.6rem;
+
+    &__item{
+        height: 12rem;
+        flex-grow: 1;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: 6px 6px 0 0;
+        transition: transform .24s linear;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        &:hover{
+            transform: scale(1.04);
+        }
+    }
+
+    &__item:nth-child(1){
+        transform-origin: left top;
+    }
+
+    &__item:nth-child(2){
+        transform-origin: top;
+
+    }
+
+    &__item:nth-child(3){
+        transform-origin: right top;
+    }
+}
+
+// .hero_container{
+
+// }
+
+// .button{
+//     background-color: #0D0D0D;
+//     width: 100%;
+//     display: flex;
+//     padding: 0 1.6rem;
+//     justify-content: flex-end;
+//     align-items: center;
+
+    // .slider-action{
+    //     background-color: red;
+    //     width: 8rem;
+    //     // height: 100%;
+    //     padding: .8rem;
+    // }
+
+    // input{
+    //     display: none;
+
+    //     &:checked ~ .slider-action {
+    //         background-color: greenyellow;
+    //     }
+    // }
+// }

@@ -1,0 +1,83 @@
+.list-content{
+    background-color: #0D0D0D;
+    height: 100%;
+    color: var(--color-white);
+
+    &__header{
+        background: linear-gradient(to right, #010101, #0D0D0D);        
+        padding: 2.4rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title{
+        font-weight: 600;
+        font-size: 2rem;
+    }
+
+    &__options{
+        width: 24rem;
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--color-small-impact);
+    }
+
+    &__main{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 11rem));
+        justify-content: center;
+        column-gap: .8rem;
+        row-gap: 1.6rem;
+        padding: 1.6rem 6rem 4rem 6rem;
+    }
+
+    &__title-manga{
+        height: 20rem;
+        transition: transform .4s linear;
+
+        &:hover{
+            .list-content__image{
+                transform: translateY(-12px);
+            }
+
+            .list-content__name{
+                color: #ffd600;
+            }
+            
+            .list-content__author{
+                color: var(--color-small-impact);
+            }
+        }
+    }
+
+    &__image{
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('kaiju8.jpg');
+        height: 80%;
+        width: 100%;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: .6rem 0;
+    }
+
+    &__name{
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    &__author{
+        font-weight: 400;
+        font-size: 1.1rem;
+        color: var(--color-gray-lt);
+    }
+}
