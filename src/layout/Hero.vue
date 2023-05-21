@@ -1,11 +1,11 @@
 <template>
-  <div class="hero-container">
+  <!-- <div class="hero-container"> -->
     <picture class="hero">
       <template v-show="isPostersReady" v-for="poster in posters" :key="poster.id" >
         <img :src="poster.image" class="hero__item">
       </template>
     </picture>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script lang="ts">
@@ -36,4 +36,4 @@ export default defineComponent({
 })
 </script>
 
-<style src="../scss/layout/_hero.scss"></style>
+<!-- <style src="../scss/layout/_hero.scss"></style> -->

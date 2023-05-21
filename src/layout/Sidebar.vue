@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
+import { axios } from '../config'
 import { onMounted, ref } from 'vue'
 
 export default {

@@ -1,15 +1,17 @@
 .hero{
     width: 100%;
+    overflow: hidden;
     display: flex;
     background: linear-gradient(to top, #0D0D0D 10%, #010101 100%);
     display: flex;
+    flex-wrap: wrap;
     padding: 1.6rem;
     justify-content: space-around;
     align-items: center;
     gap: 1.6rem;
 
     &__item{
-        height: 12rem;
+        width: 32rem;
         flex-grow: 1;
         background-size: contain;
         background-repeat: no-repeat;
@@ -21,6 +23,11 @@
 
         &:hover{
             transform: scale(1.04);
+
+            @media (width <= 1300px) {
+                transform: scale(1.02);
+    
+            }
         }
     }
 
@@ -35,6 +42,11 @@
 
     &__item:nth-child(3){
         transform-origin: right top;
+
+        @media (width <= 1300px) {
+            transform-origin: center;
+
+        }
     }
 }
 

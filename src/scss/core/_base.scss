@@ -10,9 +10,9 @@ html{
     box-sizing: border-box;
     background-color: var(--bc-light);
 
-    @media (width >= $bp-large) {
-        font-size: 80%;
-    }
+    // @media (width >= $bp-large) {
+    //     font-size: 80%;
+    // }
     
     // @media only screen and (max-width: $bp-medium) {
     //     font-size: 50%;

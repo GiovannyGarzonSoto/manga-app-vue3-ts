@@ -10,6 +10,10 @@
     height: 8.8rem;
     gap: 3rem;
 
+    @media (width <= 1300px) {
+
+    }
+
     &__logo{
         align-self: flex-start;
 
@@ -78,6 +82,11 @@
 
         &-icon{
             // fill: white;
+        }
+
+        @media (width <= 1300px) {
+            opacity: 0;
+            overflow: hidden;
         }
     }
 }
