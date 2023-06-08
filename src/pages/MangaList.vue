@@ -4,7 +4,7 @@
     <Footer />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import Nav from '../layout/Nav.vue'
 import Footer from '../layout/Footer.vue'
 import ListContent from '../layout/ListContent.vue'

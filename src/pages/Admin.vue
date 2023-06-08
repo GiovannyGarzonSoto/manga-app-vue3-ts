@@ -11,7 +11,7 @@
     <Footer/>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import Nav from '../layout/Nav.vue'
 import Hero from '../layout/Hero.vue'
 import Footer from '../layout/Footer.vue'
