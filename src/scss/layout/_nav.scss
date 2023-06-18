@@ -19,7 +19,6 @@
 
         img{
             width: 12rem;
-            z-index: 1;
         }
     }
 
@@ -105,5 +104,5 @@
     background-repeat: repeat;
     background-size: unset;
     background-image: url('header-banner.png');
-    z-index: 0;
+    z-index: -1;
 }
