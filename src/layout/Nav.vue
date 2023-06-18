@@ -1,6 +1,6 @@
 <template>
-  <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }">
-    <!-- <nav class="nav" ref="banner"> -->
+  <!-- <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }"> -->
+  <nav ref="banner" class="nav animated-banner">
     <a class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a class="nav__item">Reciente</a>
     <a class="nav__item">Destacados</a>
@@ -15,33 +15,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { defineComponent} from 'vue'
+// import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'Nav',
   setup() {
-    const router = useRouter()
-    const banner = ref(null)
-    const showBanner = ref(false)
+    // const router = useRouter()
+    // const banner = ref(null)
+    // const showBanner = ref(false)
 
-    const isMainScreen = () => {
-      if(router.currentRoute.value.path === '/')   {
-        showBanner.value = true
-      }else{
-        showBanner.value = true
-        banner.value.style.background = "rgba(0, 0, 0, 1)"
-      }
-    } 
+    // const isMainScreen = () => {
+    //   if(router.currentRoute.value.path === '/')   {
+    //     showBanner.value = true
+    //   }else{
+    //     showBanner.value = true
+    //     banner.value.style.background = "rgba(0, 0, 0, 1)"
+    //   }
+    // } 
 
-    onMounted(() => {
-      isMainScreen()
-    })
+    // onMounted(() => {
+    //   isMainScreen()
+    // })
 
-    return {
-      banner,
-      showBanner
-    }
+    // return {
+    //   banner,
+    //   showBanner
+    // }
   }
 })
 </script>
