@@ -1,5 +1,6 @@
 <template>
   <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }">
+    <!-- <nav class="nav" ref="banner"> -->
     <a class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a class="nav__item">Reciente</a>
     <a class="nav__item">Destacados</a>
@@ -25,7 +26,8 @@ export default defineComponent({
     const showBanner = ref(false)
 
     const isMainScreen = () => {
-      if(router.currentRoute.value.path === '/')   {
+      console.log("🚀 ~ file: Nav.vue:30 ~ isMainScreen ~ currentRoute.value.path:", router.currentRoute.value.path)
+      if(router.currentRoute.value.path === '/#/')   {
         showBanner.value = true
       }else{
         banner.value.style.background = "rgba(0, 0, 0, 1)"
