@@ -26,10 +26,10 @@ export default defineComponent({
     const showBanner = ref(false)
 
     const isMainScreen = () => {
-      console.log("🚀 ~ file: Nav.vue:30 ~ isMainScreen ~ currentRoute.value.path:", router.currentRoute.value.path)
-      if(router.currentRoute.value.path === '/#/')   {
+      if(router.currentRoute.value.path === '/')   {
         showBanner.value = true
       }else{
+        showBanner.value = true
         banner.value.style.background = "rgba(0, 0, 0, 1)"
       }
     } 
