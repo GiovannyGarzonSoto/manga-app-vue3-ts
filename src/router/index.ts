@@ -7,6 +7,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "Home" */ '../pages/Home.vue')
     },
     { 
+        path: '/title/:id', 
+        name: 'title',
+        component: () => import(/* webpackChunkName: "Home" */ '../pages/Title.vue')
+    },
+    { 
         path: '/manga-list', 
         name: 'manga-list',
         component: () => import(/* webpackChunkName: "MangaList" */ '../pages/MangaList.vue')

@@ -1,16 +1,5 @@
 <template>
     <div class="list-content">
-        <!-- <div class="list-content__header">
-            <div class="list-content__title">
-                Descubre
-            </div>
-            <div class="list-content__options">
-                <span>Todo</span>
-                <span>Popular</span>
-                <span>Actualizado</span>
-            </div>
-        </div> -->
-        
         <!-- TODO make a component -->
 
         <div class="list-content__search">
@@ -18,157 +7,58 @@
         </div>
 
         <div class="list-content__main">
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
+            <div v-show="chapters" class="list-content__title-manga" v-for="chapter in chapters">
+                <img :src="`${chapter.manga.images.cover}`" class="list-content__image">
                 <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
+                    <span class="list-content__name">{{ chapter.manga.title}}</span>
+                    <span class="list-content__author">{{ chapter.author.name }}</span>
                 </div>
             </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
+            <div v-show="chapters" ref="mangaTitle" class="list-content__title-manga" v-for="chapter in chapters">
+                <img ref="mangaImage" :src="`${chapter.manga.images.cover}`" class="list-content__image">
                 <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
+                    <span class="list-content__name">{{ chapter.manga.title}}</span>
+                    <span class="list-content__author">{{ chapter.author.name }}</span>
                 </div>
             </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
+            <div v-show="chapters" ref="mangaTitle" class="list-content__title-manga" v-for="chapter in chapters">
+                <img ref="mangaImage" :src="`${chapter.manga.images.cover}`" class="list-content__image">
                 <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
+                    <span class="list-content__name">{{ chapter.manga.title}}</span>
+                    <span class="list-content__author">{{ chapter.author.name }}</span>
                 </div>
             </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
+            <div v-show="chapters" ref="mangaTitle" class="list-content__title-manga" v-for="chapter in chapters">
+                <img ref="mangaImage" :src="`${chapter.manga.images.cover}`" class="list-content__image">
                 <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
-                </div>
-            </div>
-            <div class="list-content__title-manga">
-                <div class="list-content__image">
-                    
-                </div>
-                <div class="list-content__info">
-                    <span class="list-content__name">8Kaijuu</span>
-                    <span class="list-content__author">Matsumoto Naoya</span>
+                    <span class="list-content__name">{{ chapter.manga.title}}</span>
+                    <span class="list-content__author">{{ chapter.author.name }}</span>
                 </div>
             </div>
         </div>
     </div> 
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
+import { axios } from '../config'
 
 export default defineComponent({
-    name: 'listContent'
+    name: 'listContent',
+    setup() {
+        const chapters = ref([])
+
+        const getChapters = async() => {
+            const { data } = await axios.get('/chapter')
+            chapters.value = data.data
+        }
+
+        onMounted(() => {
+            getChapters()
+        })
+
+        return {
+            chapters,
+        }
+    }
 })
 </script>
