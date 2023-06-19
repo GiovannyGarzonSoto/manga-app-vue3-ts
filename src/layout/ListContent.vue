@@ -1,6 +1,6 @@
 <template>
     <div class="list-content">
-        <div class="list-content__header">
+        <!-- <div class="list-content__header">
             <div class="list-content__title">
                 Descubre
             </div>
@@ -9,7 +9,7 @@
                 <span>Popular</span>
                 <span>Actualizado</span>
             </div>
-        </div>
+        </div> -->
 
         <div class="list-content__main">
             <div class="list-content__title-manga">

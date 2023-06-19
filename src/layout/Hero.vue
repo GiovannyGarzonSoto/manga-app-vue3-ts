@@ -1,11 +1,7 @@
 <template>
-  <!-- <div class="hero-container"> -->
     <picture class="hero">
-      <template v-show="isPostersReady" v-for="poster in posters" :key="poster.id" >
-        <img :src="poster.image" class="hero__item">
-      </template>
+      <div v-show="isPostersReady" ref="banner" class="hero__item"></div>
     </picture>
-  <!-- </div> -->
 </template>
 
 <script lang="ts">
@@ -18,19 +14,45 @@ export default defineComponent({
   setup() {
     const posters = ref([])
     const isPostersReady = ref(false)
+    const banner = ref()
+
     const getPosters = async() => {
       const {data} = await axios.get('/poster')
       posters.value = data.data
     }
 
+    const generateAnimation = () => {
+      const sliderTransition = `
+      @keyframes sliderTransition {
+        0% {
+            background-image: url(${posters.value[0].image});
+        }
+        33% {
+            background-image: url(${posters.value[1].image});
+        }
+        66% {
+            background-image: url(${posters.value[2].image});
+        }
+      }`
+
+      const styleSheet = document.styleSheets[0];
+      styleSheet.insertRule(sliderTransition, styleSheet.cssRules.length);
+
+      banner.value.style.animationName = "sliderTransition";
+      banner.value.style.animationDuration = "16s";
+      banner.value.style.animationIterationCount = "infinite";
+    }
+
     onMounted(async() => {
       await getPosters()
-      isPostersReady.value = true
+      generateAnimation()
+      isPostersReady.value = true      
     })
 
     return {
       posters,
-      isPostersReady
+      isPostersReady,
+      banner
     }
   }
 })

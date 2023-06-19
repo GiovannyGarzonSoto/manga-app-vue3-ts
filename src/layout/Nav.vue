@@ -1,6 +1,7 @@
 <template>
   <!-- <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }"> -->
   <nav ref="banner" class="nav animated-banner">
+    <img class="menu-icon" src="menu.svg" />
     <a class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a class="nav__item">Reciente</a>
     <a class="nav__item">Destacados</a>
@@ -9,13 +10,14 @@
     <a class="nav__item">Favoritos</a>
     <a class="nav__item">Sobre</a>
     <div class="nav__search">
-        <input class="nav__search-input input" maxlength="24" type="text" placeholder="Buscar por serie o autor">
+      <input class="nav__search-input input" maxlength="24" type="text" placeholder="Buscar por serie o autor">
     </div>
+    <img class="search-icon" src="search.svg" />
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 // import { useRouter } from 'vue-router'
 
 export default defineComponent({
