@@ -5,6 +5,11 @@ import { resolve } from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  build: {
+    rollupOptions: {
+      external: ['lodash', 'axios'],
+    },
+  },
   resolve: {
     alias: {
       'axiosInstance': resolve(__dirname, 'src/config/axiosInstance.js'),
