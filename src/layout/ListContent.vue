@@ -10,6 +10,12 @@
                 <span>Actualizado</span>
             </div>
         </div> -->
+        
+        <!-- TODO make a component -->
+
+        <div class="list-content__search">
+            <input class="list-content__search-input input" maxlength="24" type="text" placeholder="Buscar por serie o autor">
+        </div>
 
         <div class="list-content__main">
             <div class="list-content__title-manga">
