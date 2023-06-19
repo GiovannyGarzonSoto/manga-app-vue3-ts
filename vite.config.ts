@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     rollupOptions: {
-      external: ['lodash', 'axios', 'menu.svg'],
+      external: ['lodash', 'axios', 'menu.svg','search.svg'],
     },
   },
   resolve: {
