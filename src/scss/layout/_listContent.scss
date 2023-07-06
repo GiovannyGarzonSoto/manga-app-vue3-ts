@@ -59,16 +59,22 @@
 
             &::before {
                 content: "Buscar por serie o autor";
-                width: 20px;
+                // width: 20px;
+                height: 20px;
                 position: absolute;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                color: #adadad;
+                color: white;
             }
 
             &::after{
+                content: "";
+                position: absolute;
+                background-image: url('search.svg');
+                width: 2.4rem;
+                height: 2.4rem;
 
             }
         }

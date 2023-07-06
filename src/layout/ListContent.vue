@@ -3,7 +3,7 @@
         <!-- TODO make a component -->
 
         <div class="list-content__search">
-            <input class="list-content__search-input" maxlength="24" type="text">
+            <input class="list-content__search-input" v-model="searchInput" maxlength="24" type="text">
         </div>
 
         <div class="list-content__main">
@@ -18,13 +18,20 @@
     </div> 
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { watch, defineComponent, onMounted, ref } from 'vue';
 import { axios } from '../config'
 
 export default defineComponent({
     name: 'listContent',
     setup() {
         const mangas = ref([])
+        const searchInput = ref('')
+
+        watch(searchInput, (n, o) => {
+            if(n) {
+                
+            }
+        })
 
         const getMangas = async() => {
             const { data } = await axios.get('/manga')
@@ -33,10 +40,12 @@ export default defineComponent({
 
         onMounted(() => {
             getMangas()
+            console.log(searchInput.value, 'test')
         })
 
         return {
             mangas,
+            searchInput
         }
     }
 })
