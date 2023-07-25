@@ -1,7 +1,7 @@
 <template>
   <!-- <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }"> -->
   <nav ref="nav" class="nav animated-banner">
-    <!-- <img class="menu-icon" src="menu.svg" /> -->
+    <img class="menu-icon" src="menu.svg" />
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
     <a class="nav__item">Destacados</a>
