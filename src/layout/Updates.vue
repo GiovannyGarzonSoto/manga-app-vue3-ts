@@ -6,7 +6,7 @@
     </header>
 
     <section class="titles" v-if="chapters.length > 0">
-      <div @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
+      <div @click="toTitle(chapter._id)" @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
         <div ref="box" class="title__image-box">
           <img class="title__image" :src="`${chapter.manga.images.cover}`" alt="">
           <span class="title__name">{{ chapter.manga.title }}</span>
@@ -49,10 +49,13 @@
 <script lang="ts">
 import { axios } from '../config'
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'Updates',
   setup() {
+    const router = useRouter()
+
     const chapters = ref([])
     const box = ref(null)
     const info = ref(null)
@@ -70,6 +73,10 @@ export default {
       e.target.childNodes[1].classList.remove('title__info-hover')
     }
 
+    const toTitle = (id) => {
+      router.push(`/title/${id}`)
+    }
+
     onMounted(() => {
       getChapters()
     })
@@ -78,6 +85,7 @@ export default {
       chapters,
       setMangaMask,
       removeMangaMask,
+      toTitle,
       box,
       info
     }

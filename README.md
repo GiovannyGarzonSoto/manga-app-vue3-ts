@@ -3,6 +3,6 @@ Este proyecto consta de un clon de la pagina para leer mangas online <a href="ht
 Esta realizado con vue3, y scss.
 Actualmente se trabaja en las funcionalidades de la pantalla principal
 https://timely-frangollo-96366a.netlify.app/#/
-<img src="./public/screenshotv2.png" alt="screenshotv2">
+<img src="image.png" alt="screenshotv2">
 
 
