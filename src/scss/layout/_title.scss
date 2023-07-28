@@ -19,7 +19,7 @@
     }
 
     &__portrait{
-        // width: 220px;
+        width: 220px;
         height: 350px;
     }
 
@@ -31,6 +31,8 @@
         margin-top: 4px;
         text-decoration: none;
         color: yellow;
+        text-transform: uppercase;
+        text-align: center;
     }
 
     &__right{
