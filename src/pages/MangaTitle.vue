@@ -48,7 +48,7 @@ export default defineComponent({
         const portrait = ref<HTMLImageElement>()
         const mangaTitle = ref<HTMLImageElement>()
         const author = ref<AuthorI>()
-        const favs = ref(['6498yhu2i9039c53c'])
+        const favs = ref([])
 
         const getChapters = async () => {
             const { data } = await axios.get(`/chapter/${route.params.id}`)
@@ -70,29 +70,37 @@ export default defineComponent({
             mangaTitle.value.style.background = `url(${manga.value.images.background}) rgba(0, 0, 0) `
         }
 
-        // const addToFavs = () => {
-        //     if(!favs.value.includes(route.params.id)){
-        //         favs.value = [...favs.value, route.params.id]
-        //         console.log(favs.value)
-        //         localStorage.setItem('favs', favs.value)
-        //     }
-        // }
+        const addToFavs = () => {
+            if(!favs.value.includes(route.params.id)){
+                // favs.value = [...favs.value, route.params.id]
+                // console.log(favs.value)
+                // localStorage.setItem('favs', favs.value)
+            }
+        }
 
-        // const getFavs = () => {
-        //     favs.value = localStorage.getItem('favs')
-        //     console.log(favs.value)
-        // }
+        const removeToFavs = () => {
+            if(favs.value.includes(route.params.id)){
+                // favs.value = [...favs.value, route.params.id]
+                // console.log(favs.value)
+                // localStorage.setItem('favs', favs.value)
+            }
+        }
+
+        const getFavs = () => {
+            console.log(localStorage.getItem('favs'))
+            console.log(favs.value)
+        }
 
         onMounted(async() => {
-            // getFavs()
-            // addToFavs()
+            getFavs()
+            addToFavs()
             await getChapters()
             await getManga()
             await getAuthor()
             renderManga()
         })
 
-        watch(favs, (n, o) => {
+        watch(favs, (n, _) => {
             if(n) {
                 console.log(favs,'watch: fav')
             }
@@ -103,7 +111,8 @@ export default defineComponent({
             portrait,
             mangaTitle,
             author,
-            addToFavs
+            addToFavs,
+            removeToFavs
         }
     }
 })

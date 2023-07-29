@@ -38,9 +38,10 @@
     &__portrait {
         width: 28rem;
         height: 38rem;
+        border: none;
     }
 
-    &__fav{
+    &__fav {
         font-size: 1.2rem;
         display: flex;
         justify-content: center;

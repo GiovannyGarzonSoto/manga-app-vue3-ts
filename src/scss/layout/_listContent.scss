@@ -45,7 +45,7 @@
 
         &-input{
             width: 88vw;
-            height: 4.8rem;
+            height: 5.6rem;
             border: none;
             border-bottom: 1px solid #adadad;
             outline: none;
@@ -57,16 +57,13 @@
             padding: .8rem;
             position: relative;
 
-            &::before {
+
+            &::placeholder {
                 content: "Buscar por serie o autor";
-                // width: 20px;
-                height: 20px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                color: white;
+                text-align: center;
+                font-weight: 700;
+                letter-spacing: 2px;
+                font-size: 2.2rem;
             }
 
             &::after{
@@ -81,6 +78,7 @@
     }
 
     &__title-manga{
+        margin-top: 2.4rem;
         height: 20rem;
 
         .list-content__image{

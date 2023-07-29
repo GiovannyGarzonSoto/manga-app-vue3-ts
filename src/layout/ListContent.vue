@@ -3,7 +3,7 @@
         <!-- TODO make a component -->
 
         <div class="list-content__search">
-            <input class="list-content__search-input" v-model="searchInput" maxlength="24" type="text">
+            <input placeholder="Buscar por serie o autor" class="list-content__search-input" v-model="searchInput" maxlength="24" type="text">
         </div>
 
         <div class="list-content__main">
