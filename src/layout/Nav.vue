@@ -34,9 +34,9 @@ export default defineComponent({
       if(route.path !== '/')   {
         nav.value.style.background = "rgba(0, 0, 0, 1)"
         nav.value.style.background = "linear-gradient(to bottom, black 16%, #0D0D0D 100%)";
-        searchInput.value.style.display = "none"
-        searchIcon.value.style.display = "block"
-        searchIcon.value.style.opacity = "0"
+        // searchInput.value.style.display = "none"
+        // searchIcon.value.style.display = "block"
+        // searchIcon.value.style.opacity = "0"
       }
     }
 

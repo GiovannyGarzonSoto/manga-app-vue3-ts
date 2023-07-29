@@ -20,13 +20,14 @@
         width: 100%;
         padding: 1.6rem 2rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-        gap: 1.6rem;
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        gap: .8rem;
         background-color: #0D0D0D;
 
         .title {
             display: flex;
             flex-direction: column;
+            height: 24rem;
             max-width: 16rem;
             justify-content: flex-start;
 
@@ -68,7 +69,8 @@
             }
 
             &__image{
-                max-height: 18rem;       
+                height: 20rem;
+                // aspect-ratio:;
             }
 
             &__name{

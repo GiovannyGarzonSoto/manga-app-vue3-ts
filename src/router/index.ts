@@ -8,8 +8,8 @@ const routes = [
     },
     { 
         path: '/title/:id', 
-        name: 'title',
-        component: () => import(/* webpackChunkName: "Home" */ '../pages/Title.vue')
+        name: 'manga-title',
+        component: () => import(/* webpackChunkName: "Home" */ '../pages/MangaTitle.vue')
     },
     { 
         path: '/manga-list', 
