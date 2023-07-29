@@ -4,10 +4,9 @@
     height: 100%;
     color: white;
     background-size: cover;
-    // background-repeat: no;
+    background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    z-index: -2; 
 
     &::before {
         content: "";
@@ -16,8 +15,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to top, rgba(13,13,13,1) 13%, rgba(13,13,13,.7) 48%, rgba(13,13,13,1) 100%);
-        z-index: -1;
+        background: linear-gradient(to top, rgba(13,13,13,1) 4%, rgba(13,13,13,.7) 48%, rgba(13,13,13,1) 100%);
     }
 
     &__main {
@@ -34,6 +32,7 @@
         display: flex;
         flex-direction: column;
         gap: .4rem;
+        z-index: 1;
     }
 
     &__portrait {
@@ -41,7 +40,7 @@
         height: 38rem;
     }
 
-    &__fav {
+    &__fav{
         font-size: 1.2rem;
         display: flex;
         justify-content: center;
@@ -57,13 +56,18 @@
         color: var(--color-yellow);
         text-transform: uppercase;
         text-align: center;
-
-        &:hover {
-            color: transparent;
-        }
+        cursor: pointer;
+        position: relative;
+        transition: all .8s ease;
 
         .books-icon {
             height: 2rem;
+            width: 2rem;
+            position: relative;
+        }
+
+        &:hover {
+            letter-spacing: 1px;
         }
     }
 
@@ -72,6 +76,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        z-index: 1;
     }
 
     &__portrait {
@@ -106,6 +111,8 @@
         font-size: 1.6rem;
         text-transform: uppercase;
         letter-spacing: 3px;
+        border-bottom: 1px solid var(--color-small-impact);
+        padding-bottom: 2rem;
     }
 
     &__text {

@@ -19,12 +19,13 @@
 </template>
 <script lang="ts">
 import { watch, defineComponent, onMounted, ref } from 'vue';
+import { MangaI } from '../interfaces'
 import { axios } from '../config'
 
 export default defineComponent({
     name: 'listContent',
     setup() {
-        const mangas = ref([])
+        const mangas = ref<MangaI[]>([])
         const searchInput = ref('')
 
         watch(searchInput, (n, o) => {
