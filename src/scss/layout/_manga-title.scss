@@ -38,7 +38,6 @@
     &__portrait {
         width: 28rem;
         height: 38rem;
-        border: none;
     }
 
     &__fav {
@@ -59,7 +58,7 @@
         text-align: center;
         cursor: pointer;
         position: relative;
-        transition: all .8s ease;
+        transition: all .4s ease;
 
         .books-icon {
             height: 2rem;
@@ -121,5 +120,85 @@
         line-height: 1.4;
         font-size: 1.3rem;
         font-weight: 300;
+    }
+
+    &__content {
+        background: rgb(13,13,13);        
+        padding: 0 1.6rem;
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    &__chapters{
+        height: 100%;
+        width: 100%;
+        flex: 1.4 0;
+        color: var(--color-small-impact);
+    }
+
+    &__social-media{
+        height: 100%;
+        width: 100%;
+        flex: 1 0;
+    }
+
+    &__title-chapters{
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+        height: 4rem;
+        padding: 3.2rem 0 4rem;
+        border-bottom: 1px solid var(--color-small-impact);
+    }
+
+    &__title-state {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        height: 4rem;
+        padding: 1.6rem 0;
+    }
+
+    &__card {
+        width: 100%;
+        margin-top: .8rem;
+        display: flex;
+        height: 12rem;
+        gap: 1.2rem;
+        // background: rgb(136, 145, 120);
+        // margin-left: -1.8rem;
+    }
+
+    &__card-image {
+        padding: .4rem;
+        height: 100%;
+        width: 16rem;
+    }
+
+    &__card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    &__card-number {
+        font-size: 3.2rem;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    &__card-title {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        margin-top: -8px;
+    }
+
+    &__card-date{
+        margin-top: 2rem;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        font-weight: 700;
     }
 }

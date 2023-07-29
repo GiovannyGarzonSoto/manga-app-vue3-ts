@@ -2,9 +2,9 @@
     <Nav />
 
     <section ref="mangaTitle" class="manga-title">
-        <div v-if="author" class="manga-title__main">
+        <div  v-if="author" class="manga-title__main">
             <div class="manga-title__left">
-                <img ref="portrait" class="manga-title__portrait">
+                <img ref="portrait" alt="portada" class="manga-title__portrait">
                 <a @click="addToFavs" class="manga-title__fav">Enviar a favoritos <img class="books-icon" src="books.svg"> </a>
             </div>
 
@@ -20,10 +20,33 @@
             </div>
         </div>
 
-        <div class="title__content">
+    </section>
+    <div class="manga-title__content">
+        <div class="manga-title__chapters">
+            <h3 class="manga-title__title-chapters">
+                Lista de Capítulos
+            </h3>
+            <h4 class="manga-title__title-state">
+                En Hiatus
+            </h4>
+            <div class="manga-title__card" v-for="chapter in chapters">
+                <img class="manga-title__card-image" alt="manga-page" />
+                <div class="manga-title__card-content">
+                    <span class="manga-title__card-number">#001</span>
+                    <span class="manga-title__card-title">
+                        Comienza el romance
+                    </span>
+                    <span class="manga-title__card-date">
+                        20 Enero 2020
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="manga-title__social-media">
 
         </div>
-    </section>
+    </div>
 
     <Footer />
 </template>
@@ -50,7 +73,7 @@ export default defineComponent({
         const author = ref<AuthorI>()
         const favs = ref([])
 
-        const getChapters = async () => {
+        const getChapter = async () => {
             const { data } = await axios.get(`/chapter/${route.params.id}`)
             chapter.value = data.data
         }
@@ -59,6 +82,10 @@ export default defineComponent({
             const { data } = await axios.get(`/manga/${chapter.value.manga}`)
             manga.value = data.data
         }   
+
+        const getChaptersByManga = () => {
+            console.log(manga.value, 'getChaptersByManga')
+        }
 
         const getAuthor = async() => {
             const { data } = await axios.get(`/author/${manga.value.author}`)
@@ -93,10 +120,10 @@ export default defineComponent({
 
         onMounted(async() => {
             getFavs()
-            addToFavs()
-            await getChapters()
+            await getChapter()
             await getManga()
             await getAuthor()
+            getChaptersByManga()
             renderManga()
         })
 
