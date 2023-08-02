@@ -2,10 +2,11 @@
     <Nav />
 
     <section ref="mangaTitle" class="manga-title">
-        <div  v-if="author" class="manga-title__main">
+        <div v-if="author" class="manga-title__main">
             <div class="manga-title__left">
                 <img ref="portrait" alt="portada" class="manga-title__portrait">
-                <a @click="addToFavs" class="manga-title__fav">Enviar a favoritos <img class="books-icon" src="books.svg"> </a>
+                <a @click="addToFavs" class="manga-title__fav">Enviar a favoritos <img class="books-icon" src="books.svg">
+                </a>
             </div>
 
             <div class="manga-title__right">
@@ -29,7 +30,7 @@
             <h4 class="manga-title__title-state">
                 En Hiatus
             </h4>
-            <div class="manga-title__card" v-for="chapter in chapters">
+            <div class="manga-title__card">
                 <img class="manga-title__card-image" alt="manga-page" />
                 <div class="manga-title__card-content">
                     <span class="manga-title__card-number">#001</span>
@@ -67,6 +68,7 @@ export default defineComponent({
     setup() {
         const route = useRoute()
         const chapter = ref<ChapterI>()
+        // const chapters = ref<ChapterI[]>()
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
         const mangaTitle = ref<HTMLImageElement>()
@@ -78,16 +80,16 @@ export default defineComponent({
             chapter.value = data.data
         }
 
-        const getManga = async() => {
+        const getManga = async () => {
             const { data } = await axios.get(`/manga/${chapter.value.manga}`)
             manga.value = data.data
-        }   
+        }
 
         const getChaptersByManga = () => {
             console.log(manga.value, 'getChaptersByManga')
         }
 
-        const getAuthor = async() => {
+        const getAuthor = async () => {
             const { data } = await axios.get(`/author/${manga.value.author}`)
             author.value = data.data
         }
@@ -98,7 +100,7 @@ export default defineComponent({
         }
 
         const addToFavs = () => {
-            if(!favs.value.includes(route.params.id)){
+            if (!favs.value.includes(route.params.id)) {
                 // favs.value = [...favs.value, route.params.id]
                 // console.log(favs.value)
                 // localStorage.setItem('favs', favs.value)
@@ -106,7 +108,7 @@ export default defineComponent({
         }
 
         const removeToFavs = () => {
-            if(favs.value.includes(route.params.id)){
+            if (favs.value.includes(route.params.id)) {
                 // favs.value = [...favs.value, route.params.id]
                 // console.log(favs.value)
                 // localStorage.setItem('favs', favs.value)
@@ -118,7 +120,7 @@ export default defineComponent({
             console.log(favs.value)
         }
 
-        onMounted(async() => {
+        onMounted(async () => {
             getFavs()
             await getChapter()
             await getManga()
@@ -128,18 +130,18 @@ export default defineComponent({
         })
 
         watch(favs, (n, _) => {
-            if(n) {
-                console.log(favs,'watch: fav')
+            if (n) {
+                console.log(favs, 'watch: fav')
             }
         })
 
-        return {    
+        return {
             manga,
             portrait,
             mangaTitle,
             author,
             addToFavs,
-            removeToFavs
+            removeToFavs,
         }
     }
 })
