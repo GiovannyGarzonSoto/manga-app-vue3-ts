@@ -17,6 +17,7 @@
      
     &__item{
         border-radius: 8px 0 0 8px;
+        transition: transform .2s ease-in;
     }
 
     &__item:nth-child(1){
@@ -30,6 +31,11 @@
         letter-spacing: 1px;
         color: var(--color-white);
         text-align: center;
+    }
+
+    &__item:nth-child(2):hover{
+        transform: scale(1.04);
+        transform-origin: center;
     }
 
     &__discord-box{

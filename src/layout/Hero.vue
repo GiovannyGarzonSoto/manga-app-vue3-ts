@@ -33,13 +33,16 @@ export default defineComponent({
         66% {
             background-image: url(${posters.value[2].image});
         }
+        100% {
+          background-image: url(${posters.value[0].image});
+        }
       }`
 
       const styleSheet = document.styleSheets[0];
       styleSheet.insertRule(sliderTransition, styleSheet.cssRules.length);
 
       banner.value.style.animationName = "sliderTransition";
-      banner.value.style.animationDuration = "16s";
+      banner.value.style.animationDuration = "12s";
       banner.value.style.animationIterationCount = "infinite";
     }
 
