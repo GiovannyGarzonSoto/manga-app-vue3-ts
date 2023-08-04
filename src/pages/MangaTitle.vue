@@ -5,7 +5,8 @@
         <div v-if="author" class="manga-title__main">
             <div class="manga-title__left">
                 <img ref="portrait" alt="portada" class="manga-title__portrait">
-                <a @click="addToFavs" class="manga-title__fav">Enviar a favoritos <img class="books-icon" src="books.svg">
+                <a @click="" class="manga-title__fav">Enviar a favoritos 
+                    <img class="books-icon" src="books.svg">
                 </a>
             </div>
 
@@ -30,15 +31,18 @@
             <h4 class="manga-title__title-state">
                 En Hiatus
             </h4>
-            <div class="manga-title__card">
-                <img class="manga-title__card-image" alt="manga-page" />
+            <div class="manga-title__card" v-for="chapter in chapters">
+                <img class="manga-title__card-image" alt="manga-page" :src="getChapterPage(chapter._id)" />
                 <div class="manga-title__card-content">
-                    <span class="manga-title__card-number">#001</span>
+                    <span class="manga-title__card-number" v-if="Number(chapter.number) < 10">#00{{ chapter.number }}</span>
+                    <span class="manga-title__card-number" v-else-if="Number(chapter.number) < 100">#0{{ chapter.number }}</span>
+                    <span class="manga-title__card-number" v-else>#{{ chapter.number }}</span>
+
                     <span class="manga-title__card-title">
-                        Comienza el romance
+                        {{ chapter.title }}
                     </span>
                     <span class="manga-title__card-date">
-                        20 Enero 2020
+                        {{ formattedPremiere(chapter.premiere) }}
                     </span>
                 </div>
             </div>
@@ -55,7 +59,7 @@
 <script lang="ts">
 import Nav from '../layout/Nav.vue'
 import Footer from '../layout/Footer.vue'
-import { defineComponent, onMounted, ref, watch } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import { axios } from '../config';
 import { useRoute } from 'vue-router';
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
@@ -68,12 +72,12 @@ export default defineComponent({
     setup() {
         const route = useRoute()
         const chapter = ref<ChapterI>()
-        // const chapters = ref<ChapterI[]>()
+        const chapters = ref<ChapterI[]>()
+        // const pages = ref([])
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
         const mangaTitle = ref<HTMLImageElement>()
         const author = ref<AuthorI>()
-        const favs = ref([])
 
         const getChapter = async () => {
             const { data } = await axios.get(`/chapter/${route.params.id}`)
@@ -83,10 +87,12 @@ export default defineComponent({
         const getManga = async () => {
             const { data } = await axios.get(`/manga/${chapter.value.manga}`)
             manga.value = data.data
+            getChaptersByManga()
         }
 
-        const getChaptersByManga = () => {
-            console.log(manga.value, 'getChaptersByManga')
+        const getChaptersByManga = async () => {
+            const { data } = await axios.get(`/chapter/manga/${manga.value._id}`)
+            chapters.value = data.data
         }
 
         const getAuthor = async () => {
@@ -99,40 +105,24 @@ export default defineComponent({
             mangaTitle.value.style.background = `url(${manga.value.images.background}) rgba(0, 0, 0) `
         }
 
-        const addToFavs = () => {
-            if (!favs.value.includes(route.params.id)) {
-                // favs.value = [...favs.value, route.params.id]
-                // console.log(favs.value)
-                // localStorage.setItem('favs', favs.value)
-            }
+        const formattedPremiere = (premiere) => {
+            const date = new Date(premiere)
+            const day = date.getDate();
+            const month = date.toLocaleString('es', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`
         }
 
-        const removeToFavs = () => {
-            if (favs.value.includes(route.params.id)) {
-                // favs.value = [...favs.value, route.params.id]
-                // console.log(favs.value)
-                // localStorage.setItem('favs', favs.value)
-            }
-        }
-
-        const getFavs = () => {
-            console.log(localStorage.getItem('favs'))
-            console.log(favs.value)
+        const getChapterPage = (chapterId) => {
+            const data = axios.get(`/pages/chapter/${chapterId}`).then(resp  => {return resp})
+            // return data.pages[0].image
         }
 
         onMounted(async () => {
-            getFavs()
             await getChapter()
             await getManga()
             await getAuthor()
-            getChaptersByManga()
             renderManga()
-        })
-
-        watch(favs, (n, _) => {
-            if (n) {
-                console.log(favs, 'watch: fav')
-            }
         })
 
         return {
@@ -140,8 +130,9 @@ export default defineComponent({
             portrait,
             mangaTitle,
             author,
-            addToFavs,
-            removeToFavs,
+            chapters,
+            formattedPremiere,
+            getChapterPage
         }
     }
 })

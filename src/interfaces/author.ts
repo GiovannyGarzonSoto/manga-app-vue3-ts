@@ -1,3 +1,4 @@
 export interface AuthorI {
-    name: string;
+    _id: string
+    name: string
 }

@@ -1,5 +1,5 @@
 export interface MangaI {
-    id: string
+    _id: string
     title: string
     description: string
     author: string
