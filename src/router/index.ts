@@ -16,6 +16,16 @@ const routes = [
         name: 'manga-list',
         component: () => import(/* webpackChunkName: "MangaList" */ '../pages/MangaList.vue')
     },
+    { 
+        path: '/favorites', 
+        name: 'favorites',
+        component: () => import(/* webpackChunkName: "Favorites" */ '../pages/Favorites.vue')
+    },
+    { 
+        path: '/top-ranking', 
+        name: 'top-ranking',
+        component: () => import(/* webpackChunkName: "Favorites" */ '../pages/TopRanking.vue')
+    },
 ]
 
 const router = createRouter({

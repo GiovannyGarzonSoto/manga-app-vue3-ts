@@ -67,7 +67,7 @@ import { defineComponent, onMounted, ref } from 'vue';
 import { axios } from '../config';
 import { useRoute } from 'vue-router';
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
-import { useFavs } from '../hooks/useFavs';
+import { useFavs } from '../hooks';
 
 export default defineComponent({
     name: 'manga-title',

@@ -4,10 +4,10 @@
     <img class="menu-icon" src="menu.svg" />
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
-    <a class="nav__item">Destacados</a>
+    <a @click="toTopRanking" class="nav__item">Destacados</a>
     <a @click="toMangaList" class="nav__item">Descubre</a>
     <a class="nav__item" href="https://medibang.com/mpc/" target="__blank">Creators</a>
-    <a class="nav__item">Favoritos</a>
+    <a @click="toFavorites" class="nav__item">Favoritos</a>
     <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre</a>
     <form @submit="toMangaList" ref="searchInput" class="nav__search">
       <input class="nav__search-input input" maxlength="24" type="text" placeholder="Buscar por serie o autor">
@@ -23,29 +23,36 @@ import { useRoute, useRouter } from 'vue-router'
 export default defineComponent({
   name: 'Nav',
   setup() {
-    const router = useRouter()
     const route = useRoute()
+    const router = useRouter()
     const nav = ref(null)
     const searchInput = ref(null)
     const searchIcon = ref(null)
 
+    const toMangaList = () => {
+      router.push({ name: 'manga-list' })
+    }
+
+    const toMain = () => {
+      router.push({ name: 'home' })
+    }
+
+    const toFavorites = () => {
+      router.push({ name: 'favorites' })
+    }
+
+    const toTopRanking = () => {
+      router.push({ name: 'top-ranking' })
+    }
+
     const isMain = () => {
-      console.log(route.path)
-      if(route.path !== '/')   {
+      if (route.path !== '/') {
         nav.value.style.background = "rgba(0, 0, 0, 1)"
         nav.value.style.background = "linear-gradient(to bottom, black 16%, #0D0D0D 100%)";
       }
-      if(route.path === '/manga-list') {
+      if (route.path === '/manga-list') {
         searchInput.value.style.opacity = "0"
       }
-    }
-
-    const toMangaList = () => {
-      router.push({name: 'manga-list'})
-    }
-    
-    const toMain = () => {
-      router.push({name: 'home'})
     }
 
     onMounted(() => {
@@ -57,7 +64,9 @@ export default defineComponent({
       searchInput,
       searchIcon,
       toMangaList,
-      toMain
+      toMain,
+      toFavorites,
+      toTopRanking
     }
   }
 })
