@@ -2,7 +2,9 @@ import { ref } from "vue"
 
 export const useFavs = () => {
     const favs = ref([])
+
     const isFav = ref(false)
+    
     const addToFavs = (mangaId) => {
         console.log(mangaId)
         if (!favs.value.includes(mangaId)) {
