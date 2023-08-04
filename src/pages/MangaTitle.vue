@@ -5,10 +5,10 @@
         <div v-if="author" class="manga-title__main">
             <div class="manga-title__left">
                 <img ref="portrait" alt="portada" class="manga-title__portrait">
-                <a v-if="!isFav" @click="addToFavs" class="manga-title__fav">Enviar a favoritos
+                <a v-if="!isFav" @click="addToFavs(manga._id)" class="manga-title__fav">Enviar a favoritos
                     <img class="books-icon" src="books.svg">
                 </a>
-                <a v-if="isFav" @click="removeFav" class="manga-title__fav">Favorito
+                <a v-if="isFav" @click="removeFav(manga._id)" class="manga-title__fav">Favorito
                     <img class="books-icon" src="check.svg">
                 </a>
             </div>
@@ -35,7 +35,7 @@
                 En Hiatus
             </h4>
             <div class="manga-title__card" v-for="chapter in chapters">
-                <img class="manga-title__card-image" alt="manga-page" :src="getChapterPage(chapter._id)" />
+                <img class="manga-title__card-image" alt="manga-page" src="getChapterPage(chapter._id)" />
                 <div class="manga-title__card-content">
                     <span class="manga-title__card-number" v-if="Number(chapter.number) < 10">#00{{ chapter.number }}</span>
                     <span class="manga-title__card-number" v-else-if="Number(chapter.number) < 100">#0{{ chapter.number
@@ -67,6 +67,7 @@ import { defineComponent, onMounted, ref } from 'vue';
 import { axios } from '../config';
 import { useRoute } from 'vue-router';
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
+import { useFavs } from '../hooks/useFavs';
 
 export default defineComponent({
     name: 'manga-title',
@@ -75,22 +76,16 @@ export default defineComponent({
     },
     setup() {
         const route = useRoute()
-        const chapter = ref<ChapterI>()
         const chapters = ref<ChapterI[]>()
-        const favs = ref([])
-        const isFav = ref(false)
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
         const mangaTitle = ref<HTMLDivElement>()
         const author = ref<AuthorI>()
 
-        const getChapter = async () => {
-            const { data } = await axios.get(`/chapter/${route.params.id}`)
-            chapter.value = data.data
-        }
+        const { addToFavs, removeFav, getFavs, isFav } = useFavs()
 
         const getManga = async () => {
-            const { data } = await axios.get(`/manga/${chapter.value.manga}`)
+            const { data } = await axios.get(`/manga/${route.params.id}`)
             manga.value = data.data
             getChaptersByManga()
         }
@@ -118,45 +113,15 @@ export default defineComponent({
             return `${day} ${month} ${year}`
         }
 
-        const getChapterPage = (chapterId) => {
-            const data = axios.get(`/pages/chapter/${chapterId}`).then(resp => { return resp })
-            // return data.pages[0].image
-        }
-
-        const addToFavs = () => {
-            if (!favs.value.includes(manga.value._id)) {
-                favs.value = [...favs.value, manga.value._id]
-                localStorage.setItem('favs', JSON.stringify(favs.value))
-            }
-            isFav.value = true
-        }
-
-        const removeFav = () => {
-            if (favs.value.includes(manga.value._id)) {
-                const newFavs = favs.value.filter(fav => fav !== manga.value._id)
-                favs.value = newFavs
-                localStorage.setItem('favs', JSON.stringify(favs.value))
-            }
-            isFav.value = false
-        }
-
-        const getFavs = () => {
-            if (!localStorage.getItem('favs')) {
-                localStorage.setItem('favs', JSON.stringify(favs.value))
-            } else {
-                const getFavs = localStorage.getItem('favs')
-                favs.value = JSON.parse(getFavs)
-            }
-            if(favs.value.includes(manga.value._id)) {
-                isFav.value = true
-            }
+        const getChapterPage = async(chapterId) => {
+            const {data} = await axios.get(`/pages/chapter/${chapterId}`)
+            return data.data.pages[0].image
         }
 
         onMounted(async () => {
-            await getChapter()
             await getManga()
             await getAuthor()
-            getFavs()
+            getFavs(manga.value._id)
             renderManga()
         })
 

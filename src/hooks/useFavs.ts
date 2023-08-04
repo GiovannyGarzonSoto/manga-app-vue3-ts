@@ -1,41 +1,43 @@
-// import { ref } from "vue"
+import { ref } from "vue"
 
-// const favs = ref([])
-// const isFav = ref(false)
+export const useFavs = () => {
+    const favs = ref([])
+    const isFav = ref(false)
+    const addToFavs = (mangaId) => {
+        console.log(mangaId)
+        if (!favs.value.includes(mangaId)) {
+            favs.value = [...favs.value, mangaId]
+            localStorage.setItem('favs', JSON.stringify(favs.value))
+        }
+        isFav.value = true
+    }
 
-// export const usefavs = () => {
-//     const addToFavs = () => {
-//         if (!favs.value.includes(manga.value._id)) {
-//             favs.value = [...favs.value, manga.value._id]
-//             localStorage.setItem('favs', JSON.stringify(favs.value))
-//         }
-//         isFav.value = true
-//     }
+    const removeFav = (mangaId) => {
+        if (favs.value.includes(mangaId)) {
+            const newFavs = favs.value.filter(fav => fav !== mangaId)
+            favs.value = newFavs
+            localStorage.setItem('favs', JSON.stringify(favs.value))
+        }
+        isFav.value = false
+    }
 
-//     const removeFav = () => {
-//         if (favs.value.includes(manga.value._id)) {
-//             const newFavs = favs.value.filter(fav => fav !== manga.value._id)
-//             favs.value = newFavs
-//             localStorage.setItem('favs', JSON.stringify(favs.value))
-//         }
-//         isFav.value = false
-//     }
+    const getFavs = (mangaId) => {
+        if (!localStorage.getItem('favs')) {
+            localStorage.setItem('favs', JSON.stringify(favs.value))
+        } else {
+            const getFavs = localStorage.getItem('favs')
+            favs.value = JSON.parse(getFavs)
+        }
+        if(favs.value.includes(mangaId)) {
+            isFav.value = true
+        }
+    }
 
-//     const getFavs = () => {
-//         if (!localStorage.getItem('favs')) {
-//             localStorage.setItem('favs', JSON.stringify(favs.value))
-//         } else {
-//             const getFavs = localStorage.getItem('favs')
-//             favs.value = JSON.parse(getFavs)
-//         }
-//         if(favs.value.includes(manga.value._id)) {
-//             isFav.value = true
-//         }
-//     }
-
-//     return {
-//         addToFavs,
-//         removeToFavs,
-//         getFavs
-//     }
-// }
+    return {
+        addToFavs,
+        removeFav,
+        getFavs,
+        isFav,
+        favs
+    }
+}

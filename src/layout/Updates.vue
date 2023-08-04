@@ -6,7 +6,7 @@
     </header>
 
     <section class="titles" v-if="chapters.length > 0">
-      <div @click="toTitle(chapter._id)" @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
+      <div @click="toTitle(chapter.manga._id)" @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
         <div ref="box" class="title__image-box">
           <img class="title__image" :src="`${chapter.manga.images.cover}`" alt="">
           <span class="title__name">{{ chapter.manga.title }}</span>
@@ -74,7 +74,7 @@ export default {
     }
 
     const toTitle = (id) => {
-      router.push(`/title/${id}`)
+      router.push({name: 'manga-title', params: {id}})
     }
 
     onMounted(() => {
