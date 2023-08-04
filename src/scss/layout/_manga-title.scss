@@ -166,8 +166,12 @@
         display: flex;
         height: 12rem;
         gap: 1.2rem;
-        // background: rgb(136, 145, 120);
-        // margin-left: -1.8rem;
+        transition: margin-left .2s ease-in; 
+
+        &:hover{
+            background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(50,50,50,.4) 100%);
+            margin-left: .8rem;
+        }
     }
 
     &__card-image {
