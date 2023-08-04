@@ -35,7 +35,7 @@
                 En Hiatus
             </h4>
             <div class="manga-title__card" v-for="chapter in chapters">
-                <img class="manga-title__card-image" alt="manga-page" src="getChapterPage(chapter._id)" />
+                <img  class="manga-title__card-image" alt="manga-page" :src="`getChapterPage(chapter._id)`" />
                 <div class="manga-title__card-content">
                     <span class="manga-title__card-number" v-if="Number(chapter.number) < 10">#00{{ chapter.number }}</span>
                     <span class="manga-title__card-number" v-else-if="Number(chapter.number) < 100">#0{{ chapter.number
@@ -82,7 +82,7 @@ export default defineComponent({
         const mangaTitle = ref<HTMLDivElement>()
         const author = ref<AuthorI>()
 
-        const { addToFavs, removeFav, getFavs, isFav } = useFavs()
+        const { checkFavs, addToFavs, removeFav, getFavs, isFav } = useFavs()
 
         const getManga = async () => {
             const { data } = await axios.get(`/manga/${route.params.id}`)
@@ -105,7 +105,7 @@ export default defineComponent({
             mangaTitle.value.style.background = `url(${manga.value.images.background}) rgba(0, 0, 0) `
         }
 
-        const formattedPremiere = (premiere) => {
+        const formattedPremiere = (premiere: Date) => {
             const date = new Date(premiere)
             const day = date.getDate();
             const month = date.toLocaleString('es', { month: 'long' });
@@ -113,7 +113,7 @@ export default defineComponent({
             return `${day} ${month} ${year}`
         }
 
-        const getChapterPage = async(chapterId) => {
+        const getChapterPage = async(chapterId: string) => {
             const {data} = await axios.get(`/pages/chapter/${chapterId}`)
             return data.data.pages[0].image
         }
@@ -121,7 +121,8 @@ export default defineComponent({
         onMounted(async () => {
             await getManga()
             await getAuthor()
-            getFavs(manga.value._id)
+            getFavs()
+            checkFavs(manga.value._id)
             renderManga()
         })
 

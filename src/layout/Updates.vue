@@ -18,7 +18,7 @@
           <span class="title__chapter">Capitulo {{ chapter.number }}: {{ chapter.title }}</span>
         </div>
       </div>
-      <div @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
+      <div @click="toTitle(chapter.manga._id)" @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
         <div ref="box" class="title__image-box">
           <img class="title__image" :src="`${chapter.manga.images.cover}`" alt="">
           <span class="title__name">{{ chapter.manga.title }}</span>
@@ -30,7 +30,7 @@
           <span class="title__chapter">Capitulo {{ chapter.number }}: {{ chapter.title }}</span>
         </div>
       </div>
-      <div @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
+      <div @click="toTitle(chapter.manga._id)" @mouseleave="removeMangaMask" @mouseenter="setMangaMask" class="title" v-for="(chapter, _) in chapters" :key="chapter.id">
         <div ref="box" class="title__image-box">
           <img class="title__image" :src="`${chapter.manga.images.cover}`" alt="">
           <span class="title__name">{{ chapter.manga.title }}</span>

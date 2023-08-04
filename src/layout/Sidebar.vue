@@ -18,11 +18,11 @@
                 <div class="ranking-box__header">
                     <span class="ranking-box__logo"></span>
                     <h3 class="ranking-box__title">Populares</h3>
-                    <a class="ranking-box__tag tag">Ver Todo &#x276D;</a>
+                    <a @click="toTopRanking" class="ranking-box__tag tag">Ver Todo &#x276D;</a>
                 </div>
                 <div class="ranking-box__titles">
-                    <div @click="toTitle(manga._id)" @mouseleave="removeClass" @mouseenter="setClass" ref="titles" v-for="manga in mangasByViews"
-                        class="ranking-box__item">
+                    <div @click="toTitle(manga._id)" @mouseleave="removeClass" @mouseenter="setClass" ref="titles"
+                        v-for="manga in mangasByViews" class="ranking-box__item">
                         <img class="ranking-box__image" :src="`${manga.images.cover}`">
                         <div class="ranking-box__info">
                             <h4 class="ranking-box__name">{{ manga.title }}</h4>
@@ -41,6 +41,7 @@
 import { useRouter } from 'vue-router'
 import { axios } from '../config'
 import { onMounted, ref } from 'vue'
+import { useTo } from '../hooks'
 
 export default {
     name: 'Sidebar',
@@ -48,6 +49,8 @@ export default {
         const router = useRouter()
         const mangasByViews = ref([])
         const titles = ref(null)
+
+        const { toTitle, toTopRanking } = useTo(router)
 
         const getMangasByViews = async () => {
             const { data } = await axios.get('/manga/views')
@@ -62,10 +65,6 @@ export default {
             e.target.childNodes[1].childNodes[0].classList.remove('ranking-box__name-hover')
         }
 
-        const toTitle = (id) => {
-            router.push({ name: 'manga-title', params: { id } })
-        }
-
         onMounted(() => {
             getMangasByViews()
         })
@@ -75,7 +74,8 @@ export default {
             titles,
             setClass,
             removeClass,
-            toTitle
+            toTitle,
+            toTopRanking
         }
     }
 }

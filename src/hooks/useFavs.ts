@@ -5,8 +5,7 @@ export const useFavs = () => {
 
     const isFav = ref(false)
     
-    const addToFavs = (mangaId) => {
-        console.log(mangaId)
+    const addToFavs = (mangaId: string) => {
         if (!favs.value.includes(mangaId)) {
             favs.value = [...favs.value, mangaId]
             localStorage.setItem('favs', JSON.stringify(favs.value))
@@ -14,7 +13,7 @@ export const useFavs = () => {
         isFav.value = true
     }
 
-    const removeFav = (mangaId) => {
+    const removeFav = (mangaId: string) => {
         if (favs.value.includes(mangaId)) {
             const newFavs = favs.value.filter(fav => fav !== mangaId)
             favs.value = newFavs
@@ -23,13 +22,16 @@ export const useFavs = () => {
         isFav.value = false
     }
 
-    const getFavs = (mangaId) => {
+    const getFavs = () => {
         if (!localStorage.getItem('favs')) {
             localStorage.setItem('favs', JSON.stringify(favs.value))
         } else {
             const getFavs = localStorage.getItem('favs')
             favs.value = JSON.parse(getFavs)
         }
+    }
+
+    const checkFavs = (mangaId: string) => {
         if(favs.value.includes(mangaId)) {
             isFav.value = true
         }
@@ -40,6 +42,7 @@ export const useFavs = () => {
         removeFav,
         getFavs,
         isFav,
-        favs
+        favs,
+        checkFavs
     }
 }

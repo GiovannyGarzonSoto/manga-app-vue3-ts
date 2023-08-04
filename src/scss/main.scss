@@ -5,7 +5,9 @@
 @import "core/utilities";
 
 @import "animations/slideToLeft";
-// @import "animations/transitionSlider.scss";
+
+@import "pages/favorites";
+@import "pages/top-ranking";
 
 @import "layout/nav";
 @import "layout/hero";

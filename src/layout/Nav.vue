@@ -19,6 +19,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useTo } from '../hooks'
 
 export default defineComponent({
   name: 'Nav',
@@ -29,21 +30,7 @@ export default defineComponent({
     const searchInput = ref(null)
     const searchIcon = ref(null)
 
-    const toMangaList = () => {
-      router.push({ name: 'manga-list' })
-    }
-
-    const toMain = () => {
-      router.push({ name: 'home' })
-    }
-
-    const toFavorites = () => {
-      router.push({ name: 'favorites' })
-    }
-
-    const toTopRanking = () => {
-      router.push({ name: 'top-ranking' })
-    }
+    const { toTopRanking, toFavorites, toMain, toMangaList } = useTo(router)
 
     const isMain = () => {
       if (route.path !== '/') {

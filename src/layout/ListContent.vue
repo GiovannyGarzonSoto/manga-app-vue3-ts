@@ -22,6 +22,7 @@ import { watch, defineComponent, onMounted, ref } from 'vue';
 import { MangaI } from '../interfaces'
 import { axios } from '../config'
 import { useRouter } from 'vue-router'
+import { useTo } from '../hooks';
 
 export default defineComponent({
     name: 'listContent',
@@ -31,10 +32,11 @@ export default defineComponent({
         const searchInput = ref('')
         const filteredMangas = ref<MangaI[]>([])
 
-        watch(searchInput, (n, o) => {
-            let timer
+        const { toTitle } = useTo(router)
 
-            if (n !== o ) {
+        watch(searchInput, (n, _) => {
+            let timer
+            if (n) {
                 if (timer) {
                     clearTimeout(timer);
                 }
@@ -47,15 +49,11 @@ export default defineComponent({
         const filterMangas = () => {
             const term = searchInput.value.toLowerCase();
             if(term) {
-                filteredMangas.value = mangas.value.filter(item => item.title.toLowerCase().includes(term));
+                filteredMangas.value = mangas.value.filter(item => item.title.toLowerCase().includes(term))
             }
             if(!term) {
                 filteredMangas.value = mangas.value
             }
-        }
-
-        const toTitle = (id) => {
-            router.push({ name: 'manga-title', params: { id } })
         }
 
         const getMangas = async () => {

@@ -1,7 +1,9 @@
 <template>
     <Nav/>
 
-    TOP RANKING
+    <section class="top-ranking">
+        
+    </section>
 
     <Footer/>
 </template>
@@ -16,6 +18,5 @@ export default defineComponent({
     components: {
         Nav, Footer
     }
-
 })
 </script>
