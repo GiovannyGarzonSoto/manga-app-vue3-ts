@@ -5,14 +5,14 @@
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
     <a @click="toTopRanking" class="nav__item">Destacados</a>
-    <a @click="toMangaList" class="nav__item">Descubre</a>
+    <a @click="toMangaList()" class="nav__item">Descubre</a>
     <a class="nav__item" href="https://medibang.com/mpc/" target="__blank">Creators</a>
     <a @click="toFavorites" class="nav__item">Favoritos</a>
     <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre</a>
-    <form @submit="toMangaList" ref="searchInput" class="nav__search">
-      <input class="nav__search-input input" maxlength="24" type="text" placeholder="Buscar por serie o autor">
+    <form @submit="toMangaList(searchInputText)" ref="searchInput" class="nav__search">
+      <input class="nav__search-input input" v-model="searchInputText" maxlength="24" type="text" placeholder="Buscar por serie o autor">
     </form>
-    <img ref="searchIcon" @click="toMangaList" class="search-icon" src="search.svg" />
+    <img ref="searchIcon" @click="toMangaList()" class="search-icon" src="search.svg" />
   </nav>
 </template>
 
@@ -26,9 +26,10 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const router = useRouter()
-    const nav = ref(null)
-    const searchInput = ref(null)
-    const searchIcon = ref(null)
+    const nav = ref<HTMLElement>(null)
+    const searchInputText = ref<string>('')
+    const searchInput = ref<HTMLInputElement>(null)
+    const searchIcon = ref<HTMLImageElement>(null)
 
     const { toTopRanking, toFavorites, toMain, toMangaList } = useTo(router)
 
@@ -53,7 +54,8 @@ export default defineComponent({
       toMangaList,
       toMain,
       toFavorites,
-      toTopRanking
+      toTopRanking,
+      searchInputText
     }
   }
 })

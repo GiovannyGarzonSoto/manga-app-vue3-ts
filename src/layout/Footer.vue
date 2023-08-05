@@ -1,21 +1,20 @@
 <template>
     <div class="footer">
-        <img @click="toMain" class="footer__logo" src="../../public/logo.png" alt="logo">
+        <img @click="toMain" class="footer__logo" src="logo.png" alt="logo">
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
+import { Router, useRouter } from 'vue-router';
+import { useTo } from '../hooks';
 
 export default defineComponent({
     name: 'Footer',
     setup() {
-        const router = useRouter()
+        const router: Router = useRouter()
 
-        const toMain = () => {
-            router.push({ name: 'home' })
-        }
+        const { toMain } =  useTo(router)
 
         return {
             toMain

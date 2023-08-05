@@ -21,21 +21,22 @@
 import { watch, defineComponent, onMounted, ref } from 'vue';
 import { MangaI } from '../interfaces'
 import { axios } from '../config'
-import { useRouter } from 'vue-router'
+import { useRouter, Router, useRoute } from 'vue-router'
 import { useTo } from '../hooks';
 
 export default defineComponent({
     name: 'listContent',
     setup() {
-        const router = useRouter()
+        const router: Router = useRouter()
+        const route = useRoute()
         const mangas = ref<MangaI[]>([])
-        const searchInput = ref('')
+        const searchInput = ref<string>('')
         const filteredMangas = ref<MangaI[]>([])
 
         const { toTitle } = useTo(router)
 
         watch(searchInput, (n, _) => {
-            let timer
+            let timer: any
             if (n) {
                 if (timer) {
                     clearTimeout(timer);
@@ -62,7 +63,14 @@ export default defineComponent({
             filteredMangas.value = data.data
         }
 
+        const checkSearchParam = () => {
+            if(route.query.search) {
+                searchInput.value = route.query.search.toString()
+            }
+        }
+
         onMounted(() => {
+            checkSearchParam()
             getMangas()
         })
 

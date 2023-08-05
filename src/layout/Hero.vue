@@ -14,7 +14,7 @@ export default defineComponent({
   setup() {
     const posters = ref([])
     const isPostersReady = ref(false)
-    const banner = ref()
+    const banner = ref<HTMLDivElement>()
 
     const getPosters = async() => {
       const {data} = await axios.get('/poster')

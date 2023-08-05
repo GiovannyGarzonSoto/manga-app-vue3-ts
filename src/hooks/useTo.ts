@@ -9,8 +9,8 @@ export const useTo = (router: Router) => {
         router.push({ name: 'manga-title', params: { id } })
     }
 
-    const toMangaList = () => {
-        router.push({ name: 'manga-list' })
+    const toMangaList = (searchInput?: string) => {
+        router.push({ name: 'manga-list', query: { search: searchInput }}) 
     }
 
     const toMain = () => {

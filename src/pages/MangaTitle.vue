@@ -1,7 +1,8 @@
 <template>
     <Nav />
 
-    <section ref="mangaTitle" class="manga-title">
+    <div class="content">
+        <section ref="mangaTitle" class="manga-title">
         <div v-if="author" class="manga-title__main">
             <div class="manga-title__left">
                 <img ref="portrait" alt="portada" class="manga-title__portrait">
@@ -55,6 +56,7 @@
         <div class="manga-title__social-media">
 
         </div>
+    </div>
     </div>
 
     <Footer />
