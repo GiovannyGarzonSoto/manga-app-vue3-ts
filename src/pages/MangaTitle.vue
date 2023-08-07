@@ -28,12 +28,25 @@
 
     </section>
     <div class="manga-title__content">
-        <div class="manga-title__chapters">
-            <h3 class="manga-title__title-chapters">
-                Lista de Capítulos
-            </h3>
-            <h4 class="manga-title__title-state">
-                En Hiatus
+        <div v-if="manga" class="manga-title__chapters">
+            <div class="manga-title__title-chapters">
+                <h3 class="manga-title__title-list">Lista de Capítulos</h3>
+
+                <span class="manga-title__title-views">
+                    <img src="eye.svg" class="manga-title__title-icon">
+                    <span class="manga-title__title-number">
+                        987
+                    </span>
+                </span>
+            </div>
+            <h4 v-if="manga.state === 'hiatus'" class="manga-title__title-state">
+                El manga se encuentra en Hiatus
+            </h4>
+            <h4 v-if="manga.state === 'emission'" class="manga-title__title-state">
+                Cada semana un nuevo capitulo
+            </h4>
+            <h4 v-if="manga.state === 'complete'" class="manga-title__title-state">
+                Manga finalizado
             </h4>
             <div class="manga-title__card" v-for="chapter in chapters">
                 <img  class="manga-title__card-image" alt="manga-page" :src="`getChapterPage(chapter._id)`" />
@@ -89,7 +102,11 @@ export default defineComponent({
         const getManga = async () => {
             const { data } = await axios.get(`/manga/${route.params.id}`)
             manga.value = data.data
-            getChaptersByManga()
+            await getChaptersByManga()
+            chapters.value.forEach(chapter => {
+                getChapterPage(chapter._id)
+                chapter
+            })
         }
 
         const getChaptersByManga = async () => {
@@ -119,6 +136,10 @@ export default defineComponent({
             const {data} = await axios.get(`/pages/chapter/${chapterId}`)
             return data.data.pages[0].image
         }
+
+        // const getChaptersByMangaWithPage = () => {
+        //     ()
+        // }
 
         onMounted(async () => {
             await getManga()
