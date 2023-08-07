@@ -9,4 +9,5 @@ export interface MangaI {
     }
     available: boolean
     views: number
+    state:  string
 }

@@ -60,5 +60,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<!-- <style src="../scss/layout/_nav.scss"></style> -->
