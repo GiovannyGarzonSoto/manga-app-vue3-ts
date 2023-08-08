@@ -1,7 +1,7 @@
 <template>
   <!-- <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }"> -->
   <nav ref="nav" class="nav animated-banner">
-    <img class="menu-icon" src="menu.svg" />
+    <MenuIcon />
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
     <!-- <a @click="toTopRanking" class="nav__item">Destacados</a> -->
@@ -19,10 +19,14 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import MenuIcon from '../components/MenuIcon.vue'
 import { useTo } from '../hooks'
 
 export default defineComponent({
   name: 'Nav',
+  components: {
+    MenuIcon
+  },
   setup() {
     const route = useRoute()
     const router = useRouter()
