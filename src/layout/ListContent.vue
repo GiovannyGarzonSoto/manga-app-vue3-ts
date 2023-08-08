@@ -10,7 +10,7 @@
                 <img :src="`${manga.images.cover}`" class="list-content__image">
                 <div class="list-content__info">
                     <span class="list-content__name">{{ manga.title }}</span>
-                    <span class="list-content__author">{{ manga.author.name }}</span>
+                    <!-- <span class="list-content__author">{{ manga.author?.name.toString() }}</span> -->
                 </div>
             </div>
         </div>
