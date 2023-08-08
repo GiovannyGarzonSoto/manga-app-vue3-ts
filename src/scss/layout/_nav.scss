@@ -95,17 +95,6 @@
             display: none;
         }
     }
-
-    .search-icon{
-        display: none;
-        width: 2.4rem;
-        height: 2.4rem;
-
-        // on  search icon
-        @media (width <= 1200px) {
-            display: block;
-        }
-    }
 }
 
 .animated-banner::before{

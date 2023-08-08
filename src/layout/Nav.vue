@@ -12,7 +12,7 @@
     <form @submit="toMangaList(searchInputText)" ref="searchInput" class="nav__search">
       <input class="nav__search-input input" v-model="searchInputText" maxlength="24" type="text" placeholder="Buscar por serie o autor">
     </form>
-    <img ref="searchIcon" @click="toMangaList()" class="search-icon" src="search.svg" />
+    <SearchIcon @click="toMangaList()" />
   </nav>
 </template>
 
@@ -20,12 +20,13 @@
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import MenuIcon from '../components/MenuIcon.vue'
+import SearchIcon from '../components/SearchIcon.vue'
 import { useTo } from '../hooks'
 
 export default defineComponent({
   name: 'Nav',
   components: {
-    MenuIcon
+    MenuIcon, SearchIcon
   },
   setup() {
     const route = useRoute()
@@ -33,7 +34,6 @@ export default defineComponent({
     const nav = ref<HTMLElement>(null)
     const searchInputText = ref<string>('')
     const searchInput = ref<HTMLInputElement>(null)
-    const searchIcon = ref<HTMLImageElement>(null)
 
     const { toTopRanking, toFavorites, toMain, toMangaList } = useTo(router)
 
@@ -54,7 +54,6 @@ export default defineComponent({
     return {
       nav,
       searchInput,
-      searchIcon,
       toMangaList,
       toMain,
       toFavorites,

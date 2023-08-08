@@ -1,7 +1,7 @@
 <template>
     <Nav/>
     <div class="error404">
-        <img class="error404__img" src="404.svg" alt="error404" />
+        <img class="error404__img" src="../../public/404.svg" alt="error404" />
         <a style="opacity: 0;" href="https://storyset.com/web">
             Web illustrations by Storyset
         </a>

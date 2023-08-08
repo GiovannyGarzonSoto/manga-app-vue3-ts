@@ -7,7 +7,7 @@
             <div class="manga-title__left">
                 <div ref="portrait" class="manga-title__portrait"></div>
                 <a v-if="!isFav" @click="addToFavs(manga._id)" class="manga-title__fav">Enviar a favoritos
-                    <img class="books-icon" src="books.svg">
+                    <BooksIcon />
                 </a>
                 <a v-if="isFav" @click="removeFav(manga._id)" class="manga-title__fav">Favorito
                     <img class="books-icon" src="check.svg">
@@ -33,7 +33,7 @@
                 <h3 class="manga-title__title-list">Lista de Capítulos</h3>
 
                 <span class="manga-title__title-views">
-                    <img src="eye.svg" class="manga-title__title-icon">
+                    <img src="../../public/eye.svg" class="manga-title__title-icon">
                     <span class="manga-title__title-number">
                         987
                     </span>
@@ -83,11 +83,12 @@ import { axios } from '../config'
 import { Router, useRoute, useRouter } from 'vue-router'
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
 import { useFavs, useCompressImg, useTo } from '../hooks'
+import BooksIcon from '../components/BooksIcon.vue' 
 
 export default defineComponent({
     name: 'manga-title',
     components: {
-        Nav, Footer
+        Nav, Footer, BooksIcon
     },
     setup() {
         const route = useRoute()

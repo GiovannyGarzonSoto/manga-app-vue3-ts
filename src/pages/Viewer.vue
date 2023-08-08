@@ -14,10 +14,10 @@
             </div> -->
         </div>
         <div class="wrapper__menu">
-            <img src="menu-dots.svg" class="wrapper__menu-icon" alt="menu">
+            <img src="../../public/menu-dots.svg" class="wrapper__menu-icon" alt="menu">
         </div>
         <div class="wrapper__comments">
-            <img src="comments.svg" class="wrapper__comments-icon" alt="comments">
+            <img src="../../public/comments.svg" class="wrapper__comments-icon" alt="comments">
         </div>
        </div>
     </div>
