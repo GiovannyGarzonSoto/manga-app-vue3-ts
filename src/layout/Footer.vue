@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <img @click="toMain" class="footer__logo" src="logo.png" alt="logo">
+        <img @click="toMain" class="footer__logo" src="../../public/logo.png" alt="logo">
     </div>
 </template>
 
