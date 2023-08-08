@@ -6,4 +6,5 @@ export interface ChapterI {
     title: string
     premiere: Date
     available: boolean
+    pageImage?: string
 }

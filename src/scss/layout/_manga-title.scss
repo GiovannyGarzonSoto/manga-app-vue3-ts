@@ -196,17 +196,23 @@
         height: 12rem;
         gap: 1.2rem;
         transition: margin-left .2s ease-in; 
+        margin-bottom: 1.6rem;
+        padding: .8rem 1.2rem;
 
         &:hover{
-            background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(50,50,50,.4) 100%);
+            background: linear-gradient(90deg, rgba(25,25,25,.6) 0%, rgba(50,50,50,.2) 100%);
             margin-left: .8rem;
         }
     }
 
     &__card-image {
-        padding: .4rem;
+        padding: .8rem;
         height: 100%;
         width: 16rem;
+        // background-image: url('https://res.cloudinary.com/dlejpqwlh/image/upload/v1691113973/bhkkjevf7fmzbr1gkfvj.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     &__card-content {
@@ -225,11 +231,9 @@
     &__card-title {
         font-size: 1.4rem;
         letter-spacing: 1px;
-        margin-top: -8px;
     }
 
     &__card-date{
-        margin-top: 2rem;
         font-size: 1.2rem;
         letter-spacing: 1px;
         font-weight: 700;

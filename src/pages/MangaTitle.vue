@@ -5,7 +5,7 @@
         <section ref="mangaTitle" class="manga-title">
         <div v-if="author" class="manga-title__main">
             <div class="manga-title__left">
-                <img ref="portrait" alt="portada" class="manga-title__portrait">
+                <div ref="portrait" class="manga-title__portrait"></div>
                 <a v-if="!isFav" @click="addToFavs(manga._id)" class="manga-title__fav">Enviar a favoritos
                     <img class="books-icon" src="books.svg">
                 </a>
@@ -49,7 +49,7 @@
                 Manga finalizado
             </h4>
             <div class="manga-title__card" v-for="chapter in chapters">
-                <img  class="manga-title__card-image" alt="manga-page" :src="`getChapterPage(chapter._id)`" />
+                <div ref="pageChapter" v-if="chapter.pageImage"  class="manga-title__card-image"></div>
                 <div class="manga-title__card-content">
                     <span class="manga-title__card-number" v-if="Number(chapter.number) < 10">#00{{ chapter.number }}</span>
                     <span class="manga-title__card-number" v-else-if="Number(chapter.number) < 100">#0{{ chapter.number
@@ -95,6 +95,7 @@ export default defineComponent({
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
         const mangaTitle = ref<HTMLDivElement>()
+        const pageChapter = ref(null)
         const author = ref<AuthorI>()
 
         const { checkFavs, addToFavs, removeFav, getFavs, isFav } = useFavs()
@@ -103,10 +104,16 @@ export default defineComponent({
             const { data } = await axios.get(`/manga/${route.params.id}`)
             manga.value = data.data
             await getChaptersByManga()
-            chapters.value.forEach(chapter => {
-                getChapterPage(chapter._id)
-                chapter
+            chapters.value.forEach(async(chapter, i) => {
+                const pageImage = await getPagesbyChapter(chapter._id)
+                if(!pageImage) return
+                chapters.value[i] = {...chapters.value[i], pageImage: pageImage.image}
             })
+        }
+
+        const getPagesbyChapter = async(chapterId: string) => {
+            const {data} = await axios.get(`/pages/chapter/${chapterId}`)
+            return data.data.pages[0]
         }
 
         const getChaptersByManga = async () => {
@@ -122,6 +129,12 @@ export default defineComponent({
         const renderManga = () => {
             portrait.value.style.backgroundImage = `url(${manga.value.images.cover})`
             mangaTitle.value.style.background = `url(${manga.value.images.background}) rgba(0, 0, 0) `
+            setTimeout(() => {
+                pageChapter.value.forEach((e, i) =>{
+                    console.log(e, i)
+                    e.style.backgroundImage = `url(${chapters.value[i].pageImage})`
+                })
+            }, 400)
         }
 
         const formattedPremiere = (premiere: Date) => {
@@ -131,15 +144,6 @@ export default defineComponent({
             const year = date.getFullYear();
             return `${day} ${month} ${year}`
         }
-
-        const getChapterPage = async(chapterId: string) => {
-            const {data} = await axios.get(`/pages/chapter/${chapterId}`)
-            return data.data.pages[0].image
-        }
-
-        // const getChaptersByMangaWithPage = () => {
-        //     ()
-        // }
 
         onMounted(async () => {
             await getManga()
@@ -156,10 +160,11 @@ export default defineComponent({
             author,
             chapters,
             formattedPremiere,
-            getChapterPage,
+            getPagesbyChapter,
             addToFavs,
             isFav,
-            removeFav
+            removeFav,
+            pageChapter
         }
     }
 })

@@ -7,10 +7,12 @@
     font-weight: 500;
     transition: border-radius .2s linear,
         transform .2s linear;
+    will-change: transform;
+    will-change: border-radius;
 
     &:hover {
         transform: scale(1.02);
-        transform-origin: right;
+        transform-origin: center;
         border-radius: 14px 0 0 14px;
     }
 }
