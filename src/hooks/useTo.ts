@@ -17,6 +17,10 @@ export const useTo = (router: Router) => {
         router.push({ name: 'home' })
     }
 
+    const toViewer = (chapterId: string) => {
+        router.push({name: 'viewer', params: { chapterId }})
+    }
+
     const toFavorites = () => {
         router.push({ name: 'favorites' })
     }
@@ -26,6 +30,7 @@ export const useTo = (router: Router) => {
         toTitle,
         toMangaList,
         toFavorites,
-        toMain
+        toMain,
+        toViewer,
     }
 }

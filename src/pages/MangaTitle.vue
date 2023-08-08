@@ -48,7 +48,7 @@
             <h4 v-if="manga.state === 'complete'" class="manga-title__title-state">
                 Manga finalizado
             </h4>
-            <div class="manga-title__card" v-for="chapter in chapters">
+            <div class="manga-title__card" v-for="chapter in chapters" @click="toViewer(chapter._id)">
                 <div ref="pageChapter" v-if="chapter.pageImage"  class="manga-title__card-image"></div>
                 <div class="manga-title__card-content">
                     <span class="manga-title__card-number" v-if="Number(chapter.number) < 10">#00{{ chapter.number }}</span>
@@ -80,9 +80,9 @@ import Nav from '../layout/Nav.vue'
 import Footer from '../layout/Footer.vue'
 import { defineComponent, onMounted, ref } from 'vue'
 import { axios } from '../config'
-import { useRoute } from 'vue-router'
+import { Router, useRoute, useRouter } from 'vue-router'
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
-import { useFavs, useCompressImg } from '../hooks'
+import { useFavs, useCompressImg, useTo } from '../hooks'
 
 export default defineComponent({
     name: 'manga-title',
@@ -91,6 +91,7 @@ export default defineComponent({
     },
     setup() {
         const route = useRoute()
+        const router: Router = useRouter()
         const chapters = ref<ChapterI[]>()
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
@@ -99,6 +100,7 @@ export default defineComponent({
         const author = ref<AuthorI>()
 
         const { checkFavs, addToFavs, removeFav, getFavs, isFav } = useFavs()
+        const { toViewer } = useTo(router)
 
         const getManga = async () => {
             const { data } = await axios.get(`/manga/${route.params.id}`)
@@ -135,9 +137,9 @@ export default defineComponent({
                     const { urlCompressed } = useCompressImg(url, 5)
                     setTimeout(() => {
                         e.style.backgroundImage = `url(${urlCompressed})`
-                    }, 800*(i + 1))
+                    }, 1200*i)
                 })
-            }, 2000)
+            }, 2400)
         }
 
         const formattedPremiere = (premiere: Date) => {
@@ -168,6 +170,7 @@ export default defineComponent({
             addToFavs,
             isFav,
             removeFav,
+            toViewer,
         }
     }
 })

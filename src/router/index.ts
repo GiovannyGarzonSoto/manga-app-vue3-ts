@@ -24,7 +24,12 @@ const routes = [
     { 
         path: '/top-ranking', 
         name: 'top-ranking',
-        component: () => import(/* webpackChunkName: "Favorites" */ '../pages/TopRanking.vue')
+        component: () => import(/* webpackChunkName: "TopRanking" */ '../pages/TopRanking.vue')
+    },
+    { 
+        path: '/viewer/:chapterId', 
+        name: 'viewer',
+        component: () => import(/* webpackChunkName: "Viewer" */ '../pages/Viewer.vue')
     },
 ]
 

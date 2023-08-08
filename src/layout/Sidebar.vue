@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { useRouter } from 'vue-router'
+import { Router, useRouter } from 'vue-router'
 import { axios } from '../config'
 import { onMounted, ref } from 'vue'
 import { useTo } from '../hooks'
@@ -46,7 +46,7 @@ import { useTo } from '../hooks'
 export default {
     name: 'Sidebar',
     setup() {
-        const router = useRouter()
+        const router: Router = useRouter()
         const mangasByViews = ref([])
         const titles = ref(null)
 
