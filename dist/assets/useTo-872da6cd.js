@@ -1,1 +1,0 @@
-const m=a=>({toTopRanking:()=>{a.push({name:"top-ranking"})},toTitle:t=>{a.push({name:"manga-title",params:{id:t}})},toMangaList:t=>{a.push({name:"manga-list",query:{search:t}})},toFavorites:()=>{a.push({name:"favorites"})},toMain:()=>{a.push({name:"home"})},toViewer:t=>{a.push({name:"viewer",params:{chapterId:t}})}});export{m as u};
