@@ -78,11 +78,11 @@
 <script lang="ts">
 import Nav from '../layout/Nav.vue'
 import Footer from '../layout/Footer.vue'
-import { defineComponent, onMounted, ref } from 'vue';
-import { axios } from '../config';
-import { useRoute } from 'vue-router';
+import { defineComponent, onMounted, ref } from 'vue'
+import { axios } from '../config'
+import { useRoute } from 'vue-router'
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
-import { useFavs } from '../hooks';
+import { useFavs, useCompressImg } from '../hooks'
 
 export default defineComponent({
     name: 'manga-title',
@@ -95,7 +95,7 @@ export default defineComponent({
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
         const mangaTitle = ref<HTMLDivElement>()
-        const pageChapter = ref(null)
+        const pageChapter = ref<HTMLDivElement[]>([])
         const author = ref<AuthorI>()
 
         const { checkFavs, addToFavs, removeFav, getFavs, isFav } = useFavs()
@@ -131,17 +131,20 @@ export default defineComponent({
             mangaTitle.value.style.background = `url(${manga.value.images.background}) rgba(0, 0, 0) `
             setTimeout(() => {
                 pageChapter.value.forEach((e, i) =>{
-                    console.log(e, i)
-                    e.style.backgroundImage = `url(${chapters.value[i].pageImage})`
+                    const url = chapters.value[i].pageImage
+                    const { urlCompressed } = useCompressImg(url, 5)
+                    setTimeout(() => {
+                        e.style.backgroundImage = `url(${urlCompressed})`
+                    }, 800*(i + 1))
                 })
-            }, 400)
+            }, 2000)
         }
 
         const formattedPremiere = (premiere: Date) => {
             const date = new Date(premiere)
-            const day = date.getDate();
-            const month = date.toLocaleString('es', { month: 'long' });
-            const year = date.getFullYear();
+            const day = date.getDate()
+            const month = date.toLocaleString('es', { month: 'long' })
+            const year = date.getFullYear()
             return `${day} ${month} ${year}`
         }
 
@@ -156,6 +159,7 @@ export default defineComponent({
         return {
             manga,
             portrait,
+            pageChapter,
             mangaTitle,
             author,
             chapters,
@@ -164,7 +168,6 @@ export default defineComponent({
             addToFavs,
             isFav,
             removeFav,
-            pageChapter
         }
     }
 })
