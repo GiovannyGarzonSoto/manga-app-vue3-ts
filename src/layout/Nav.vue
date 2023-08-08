@@ -4,11 +4,11 @@
     <img class="menu-icon" src="menu.svg" />
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
-    <a @click="toTopRanking" class="nav__item">Destacados</a>
+    <!-- <a @click="toTopRanking" class="nav__item">Destacados</a> -->
     <a @click="toMangaList()" class="nav__item">Descubre</a>
     <a class="nav__item" href="https://medibang.com/mpc/" target="__blank">Creators</a>
     <a @click="toFavorites" class="nav__item">Favoritos</a>
-    <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre</a>
+    <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre Nosotros</a>
     <form @submit="toMangaList(searchInputText)" ref="searchInput" class="nav__search">
       <input class="nav__search-input input" v-model="searchInputText" maxlength="24" type="text" placeholder="Buscar por serie o autor">
     </form>
