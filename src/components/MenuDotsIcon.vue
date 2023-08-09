@@ -1,23 +1,20 @@
 <template>
-    <img class="menu-icon" src="../../public/menu.svg" />
+    <img src="../../public/menu-dots.svg" class="menu-icon-dots" alt="menu">
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'MenuIcon',
+    name: 'MenuDotsIcon',
 })
 </script>
 
 <style>
-.menu-icon {
-    display: none;
-    width: 2.4rem;
-    height: 2.4rem;
-
-    @media (width <=760px) {
-        display: block;
-    }
+.menu-icon-dots{
+    position: fixed;
+    right: 0;
+    margin: 0 1.6rem;
+    width: 6.8rem;
 }
 </style>

@@ -1,23 +1,18 @@
 <template>
-    <img class="menu-icon" src="../../public/menu.svg" />
+    <img src="../../public/eye.svg" class="eye-icon">
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'MenuIcon',
+    name: 'EyeIcon',
 })
 </script>
 
 <style>
-.menu-icon {
-    display: none;
-    width: 2.4rem;
-    height: 2.4rem;
-
-    @media (width <=760px) {
-        display: block;
-    }
+.eye-icon {
+    width: 1.88rem;
+    height: 1.88rem;
 }
 </style>

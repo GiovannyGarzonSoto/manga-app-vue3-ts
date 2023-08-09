@@ -10,7 +10,7 @@
                     <BooksIcon />
                 </a>
                 <a v-if="isFav" @click="removeFav(manga._id)" class="manga-title__fav">Favorito
-                    <img class="books-icon" src="../../public/check.svg">
+                    <CheckIcon />
                 </a>
             </div>
 
@@ -33,7 +33,7 @@
                 <h3 class="manga-title__title-list">Lista de Capítulos</h3>
 
                 <span class="manga-title__title-views">
-                    <img src="../../public/eye.svg" class="manga-title__title-icon">
+                    <EyeIcon />
                     <span class="manga-title__title-number">
                         987
                     </span>
@@ -84,11 +84,13 @@ import { Router, useRoute, useRouter } from 'vue-router'
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
 import { useFavs, useCompressImg, useTo } from '../hooks'
 import BooksIcon from '../components/BooksIcon.vue' 
+import EyeIcon from '../components/EyeIcon.vue'
+import CheckIcon from '../components/CheckIcon.vue'
 
 export default defineComponent({
     name: 'manga-title',
     components: {
-        Nav, Footer, BooksIcon
+        Nav, Footer, BooksIcon, EyeIcon, CheckIcon
     },
     setup() {
         const route = useRoute()

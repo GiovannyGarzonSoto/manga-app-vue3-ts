@@ -14,10 +14,10 @@
             </div> -->
         </div>
         <div class="wrapper__menu">
-            <img src="../../public/menu-dots.svg" class="wrapper__menu-icon" alt="menu">
+            <MenuDotsIcon />
         </div>
         <div class="wrapper__comments">
-            <img src="../../public/comments.svg" class="wrapper__comments-icon" alt="comments">
+            <CommentsIcon />
         </div>
        </div>
     </div>
@@ -30,10 +30,13 @@ import { defineComponent, onMounted, ref } from 'vue'
 import { useTo } from '../hooks'
 import { useRouter, Router } from 'vue-router'
 import { ChapterI } from '../interfaces'
+import MenuDotsIcon from '../components/MenuDotsIcon.vue'
+import CommentsIcon from '../components/CommentsIcon.vue'
 
 export default defineComponent({
     name: 'viewer',
     components: {
+        MenuDotsIcon, CommentsIcon
     },
     setup() {
         const route = useRoute()

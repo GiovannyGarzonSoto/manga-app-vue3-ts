@@ -1,23 +1,19 @@
 <template>
-    <img class="menu-icon" src="../../public/menu.svg" />
+    <img class="check-icon" src="../../public/check.svg">
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'MenuIcon',
+    name: 'CheckIcon',
 })
 </script>
 
 <style>
-.menu-icon {
-    display: none;
-    width: 2.4rem;
-    height: 2.4rem;
-
-    @media (width <=760px) {
-        display: block;
-    }
+.check-icon {
+    height: 2rem;
+    width: 2rem;
+    position: relative;
 }
 </style>

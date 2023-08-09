@@ -22,6 +22,7 @@ import { useRoute, useRouter } from 'vue-router'
 import MenuIcon from '../components/MenuIcon.vue'
 import SearchIcon from '../components/SearchIcon.vue'
 import { useTo } from '../hooks'
+import '../scss/animations/_slideToLeft.scss'
 
 export default defineComponent({
   name: 'Nav',
@@ -48,6 +49,8 @@ export default defineComponent({
     }
 
     onMounted(() => {
+      // nav.value.style.backgroundImage = 'url(./../public/header-banner.png)'
+      // nav.value.style.animation = 'slideToLeft 100s infinite linear'
       isMain()
     })
 
