@@ -10,7 +10,7 @@
                     <BooksIcon />
                 </a>
                 <a v-if="isFav" @click="removeFav(manga._id)" class="manga-title__fav">Favorito
-                    <img class="books-icon" src="check.svg">
+                    <img class="books-icon" src="../../public/check.svg">
                 </a>
             </div>
 
