@@ -56,7 +56,7 @@
                 content: '';
                 width: 100%;
                 height: 100%;
-                background-image: url('discord.svg');
+                background-image: url('../../../public/discord.svg');
                 background-repeat: no-repeat;
                 background-position: center;
                 transform: scale(.8);
@@ -82,7 +82,7 @@
                 content: '';
                 width: 100%;
                 height: 100%;
-                background-image: url('facebook.svg');
+                background-image: url('../../../public/facebook.svg');
                 background-repeat: no-repeat;
                 background-position: center;
                 transform: scale(.65);
@@ -93,7 +93,7 @@
     &__item:nth-child(2){
         height: 8rem;
         width: 100%;
-        background-image: url('creators-banner.jpg');
+        background-image: url('../../../public/creators-banner.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -125,7 +125,7 @@
 
         &__logo{
             width: 2.4rem;
-            background-image: url('flame.svg');
+            background-image: url('../../../public/flame.svg');
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -184,19 +184,19 @@
 
             &:nth-child(1) {    
                 &::after{
-                    background-image: url('first.png');
+                    background-image: url('../../../public/first.png');
                 }
             }
     
             &:nth-child(2) {
                 &::after{
-                    background-image: url('second.png');
+                    background-image: url('../../../public/second.png');
                 }
             }
     
             &:nth-child(3) {
                 &::after{
-                    background-image: url('third.png');
+                    background-image: url('../../../public/third.png');
                 }
             }
         }
@@ -258,7 +258,7 @@
         &__logo-ranking{
             width: 1.2rem;
             height: 1.2rem;
-            background-image: url('flame.svg');
+            background-image: url('../../../public/flame.svg');
             background-repeat: no-repeat;
             background-size: contain;
         }
