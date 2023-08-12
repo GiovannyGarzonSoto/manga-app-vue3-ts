@@ -5,6 +5,6 @@ Esta realizado con vue3, y scss.
 <img src="public/main.png" alt="screenshotv3" />
 <img src="public/title.png" alt="screenshotTitle" />
 <img src="public/viewer.png"alt="viewer" />
-
+<img src="public/ranking.png"alt="ranking" />
 
 

@@ -8,7 +8,7 @@
     <a @click="toMangaList()" class="nav__item">Descubre</a>
     <a class="nav__item" href="https://medibang.com/mpc/" target="__blank">Creators</a>
     <a @click="toFavorites" class="nav__item">Favoritos</a>
-    <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre Nosotros</a>
+    <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre</a>
     <form @submit="toMangaList(searchInputText)" ref="searchInput" class="nav__search">
       <input class="nav__search-input input" v-model="searchInputText" maxlength="24" type="text" placeholder="Buscar por serie o autor">
     </form>
