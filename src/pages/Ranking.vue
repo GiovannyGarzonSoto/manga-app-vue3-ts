@@ -2,13 +2,13 @@
     <Nav />
 
     <main class="top-ranking">
-        <div @click="toTitle(manga._id)" ref="titles" v-for="manga in mangasByViews" class="top-ranking-box__item">
-            <img class="top-ranking-box__image" :src="`${manga.images.cover}`">
-            <div class="top-ranking-box__info">
-                <h4 class="top-ranking-box__name">{{ manga.title }}</h4>
-                <h4 class="top-ranking-box__author">{{ manga.author.name }}</h4>
-                <h4 class="top-ranking-box__views"> <span class="ranking-box__logo-ranking"></span>{{ manga.views }}
-                </h4>
+        <div @click="toTitle(manga._id)" ref="titles" v-for="manga in mangasByViews" class="top-ranking__item">
+            <img class="top-ranking__image" :src="`${manga.images.cover}`">
+            <div class="top-ranking__info">
+                <!-- <h4 class="top-ranking__name">{{ manga.title }}</h4>
+                <h4 class="top-ranking__author">{{ manga.author.name }}</h4>
+                <h4 class="top-ranking__views"> <span class="ranking__logo-ranking"></span>{{ manga.views }}
+                </h4> -->
             </div>
         </div>
     </main>
