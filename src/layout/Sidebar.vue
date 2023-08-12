@@ -21,7 +21,7 @@
                     <a @click="toTopRanking" class="ranking-box__tag tag">Ver Todo &#x276D;</a>
                 </div>
                 <div class="ranking-box__titles">
-                    <div @click="toTitle(manga._id)" @mouseleave="removeClass" @mouseenter="setClass" ref="titles"
+                    <div @click="toTitle(manga._id)"  ref="titles"
                         v-for="manga in mangasByViews" class="ranking-box__item">
                         <img class="ranking-box__image" :src="`${manga.images.cover}`">
                         <div class="ranking-box__info">
@@ -57,14 +57,6 @@ export default {
             mangasByViews.value = data.data
         }
 
-        const setClass = (e) => {
-            e.target.childNodes[1].childNodes[0].classList.add('ranking-box__name-hover')
-        }
-
-        const removeClass = (e) => {
-            e.target.childNodes[1].childNodes[0].classList.remove('ranking-box__name-hover')
-        }
-
         onMounted(() => {
             getMangasByViews()
         })
@@ -72,8 +64,6 @@ export default {
         return {
             mangasByViews,
             titles,
-            setClass,
-            removeClass,
             toTitle,
             toTopRanking
         }
@@ -81,5 +71,3 @@ export default {
 }
 
 </script>
-
-<!-- <style src="../scss/layout/_sidebar.scss"></style> -->

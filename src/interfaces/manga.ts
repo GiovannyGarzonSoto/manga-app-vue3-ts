@@ -2,7 +2,9 @@ export interface MangaI {
     _id: string
     title: string
     description: string
-    author: string
+    author: {
+        name: string
+    },
     images: {
         cover: string
         background: string

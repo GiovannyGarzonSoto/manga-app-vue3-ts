@@ -4,7 +4,7 @@
     <MenuIcon />
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
-    <!-- <a @click="toTopRanking" class="nav__item">Destacados</a> -->
+    <a @click="toTopRanking" class="nav__item">Destacados</a>
     <a @click="toMangaList()" class="nav__item">Descubre</a>
     <a class="nav__item" href="https://medibang.com/mpc/" target="__blank">Creators</a>
     <a @click="toFavorites" class="nav__item">Favoritos</a>

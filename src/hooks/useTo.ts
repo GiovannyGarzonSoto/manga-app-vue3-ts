@@ -2,7 +2,7 @@ import { Router } from "vue-router"
 
 export const useTo = (router: Router) => {
     const toTopRanking = () => {
-        router.push({ name: 'top-ranking' })
+        router.push({ name: 'ranking' })
     }
 
     const toTitle = (id: string) => {
