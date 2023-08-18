@@ -1,25 +1,48 @@
 <template>
     <div class="viewer">
-       <div class="pages">
+        <div class="pages">
             <div v-for="_ in pages" ref="pageViewer" class="pages__page">
             </div>
-       </div>
-       <div ref="wrapper" @click="toggleWrapper" class="wrapper">
-        <div class="wrapper__logo" @click="toMain">
-            <img class="wrapper__img" src="../../public/logo.png" alt="logo">
-            <!-- <div class="wrapper_container">
+        </div>
+        <div ref="wrapper" @click="toggleWrapper" class="wrapper">
+            <div class="wrapper__logo" @click="toMain">
+                <img class="wrapper__img" src="../../public/logo.png" alt="logo">
+                <!-- <div class="wrapper_container">
                 <h3 v-if="chapter" class="wrapper__title">
                     {{ chapter?.title }}
                 </h3>
             </div> -->
+            </div>
+            <div class="wrapper__menu">
+                <MenuDotsIcon />
+                <div class="wrapper__container">
+                    <h3 class="wrapper__container-title">Resolución De pagína</h3>
+                    <div class="wrapper__input-group">
+                        <label class="wrapper__label" >
+                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Vertical</span>
+                        </label>
+                        <label class="wrapper__label" >
+                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Horizontal</span>
+                        </label>
+                    </div>
+                    <h3 class="wrapper__container-title">Dirección De Lectura</h3>
+                    <div class="wrapper__input-group">
+                        <label class="wrapper__label" >
+                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Bajo</span>
+                        </label>
+                        <label class="wrapper__label" >
+                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Medio</span>
+                        </label>
+                        <label class="wrapper__label" >
+                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Alto</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper__comments">
+                <CommentsIcon />
+            </div>
         </div>
-        <div class="wrapper__menu">
-            <MenuDotsIcon />
-        </div>
-        <div class="wrapper__comments">
-            <CommentsIcon />
-        </div>
-       </div>
     </div>
 </template>
 
@@ -49,8 +72,8 @@ export default defineComponent({
 
         const { toMain } = useTo(router)
 
-        const getPagesByChapter = async() => {
-            const {data} = await axios.get(`/pages/chapter/${route.params.chapterId}`)
+        const getPagesByChapter = async () => {
+            const { data } = await axios.get(`/pages/chapter/${route.params.chapterId}`)
             pages.value = data.data.pages
             chapter.value = data.data.chapter
             renderPages()
@@ -65,15 +88,15 @@ export default defineComponent({
         }
 
         const toggleWrapper = () => {
-            if(isWrapperActive) {
+            if (isWrapperActive) {
                 isWrapperActive.value = !isWrapperActive.value
-            }else{
+            } else {
                 isWrapperActive.value = true
             }
         }
- 
-        onMounted(async() => {
-            getPagesByChapter()   
+
+        onMounted(async () => {
+            getPagesByChapter()
         })
 
         return {

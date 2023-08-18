@@ -57,7 +57,7 @@
                     <span class="manga-title__card-number" v-else>#{{ chapter.number }}</span>
 
                     <span class="manga-title__card-title">
-                        {{ chapter.title }}
+                        Capítulo {{ chapter.number }} {{ chapter.title }}
                     </span>
                     <span class="manga-title__card-date">
                         {{ formattedPremiere(chapter.premiere) }}
