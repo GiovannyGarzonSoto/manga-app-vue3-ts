@@ -1,10 +1,10 @@
 <template>
     <div class="viewer">
-        <div class="pages">
+        <div class="pages" @click="activeWrapper">
             <div v-for="_ in pages" ref="pageViewer" class="pages__page">
             </div>
         </div>
-        <div ref="wrapper" @click="toggleWrapper" class="wrapper">
+        <div ref="wrapper" class="wrapper" @click="deactiveWrapper">
             <div class="wrapper__logo" @click="toMain">
                 <img class="wrapper__img" src="../../public/logo.png" alt="logo">
                 <!-- <div class="wrapper_container">
@@ -13,29 +13,41 @@
                 </h3>
             </div> -->
             </div>
-            <div class="wrapper__menu">
-                <MenuDotsIcon />
-                <div class="wrapper__container">
+            <div class="wrapper__menu" @click="activeMenu">
+                <MenuDotsIcon  />
+                <div class="wrapper__container" ref="menuContainer">
                     <h3 class="wrapper__container-title">Resolución De pagína</h3>
                     <div class="wrapper__input-group">
-                        <label class="wrapper__label" >
-                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Vertical</span>
+                        <label class="wrapper__label">
+                            <input class="wrapper__input" type="radio" name="orientation">
+                            Vertical
+                            <span class="wrapper__radio-button"></span>
                         </label>
-                        <label class="wrapper__label" >
-                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Horizontal</span>
+                        <label class="wrapper__label">
+                            <input class="wrapper__input" type="radio" name="orientation">
+                            Horizontal
+                            <span class="wrapper__radio-button"></span>
                         </label>
                     </div>
                     <h3 class="wrapper__container-title">Dirección De Lectura</h3>
                     <div class="wrapper__input-group">
-                        <label class="wrapper__label" >
-                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Bajo</span>
-                        </label>
-                        <label class="wrapper__label" >
-                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Medio</span>
-                        </label>
-                        <label class="wrapper__label" >
-                            <input class="wrapper__input" type="checkbox"> <span class="wrapper__input-text">Alto</span>
-                        </label>
+                        <div class="wrapper__input-group">
+                            <label class="wrapper__label">
+                                <input class="wrapper__input" type="radio" name="quality">
+                                Bajo
+                                <span class="wrapper__radio-button"></span>
+                            </label>
+                            <label class="wrapper__label">
+                                <input class="wrapper__input" type="radio" name="quality">
+                                Medio
+                                <span class="wrapper__radio-button"></span>
+                            </label>
+                            <label class="wrapper__label">
+                                <input class="wrapper__input" type="radio" name="quality">
+                                Alto
+                                <span class="wrapper__radio-button"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,8 +79,10 @@ export default defineComponent({
         const pageViewer = ref()
         const wrapper = ref<HTMLDivElement>()
         const router: Router = useRouter()
-        const isWrapperActive = ref(true)
+        const isWrapperActive = ref<boolean>(false)
+        const isMenuActive = ref<boolean>(false)
         const chapter = ref<ChapterI>()
+        const menuContainer = ref();
 
         const { toMain } = useTo(router)
 
@@ -87,11 +101,24 @@ export default defineComponent({
             }, 1000)
         }
 
-        const toggleWrapper = () => {
-            if (isWrapperActive) {
-                isWrapperActive.value = !isWrapperActive.value
-            } else {
+        const activeWrapper = () => {
+            if (!isWrapperActive.value) {
+                wrapper.value.style.display = 'block'
                 isWrapperActive.value = true
+            }
+        }
+
+        const deactiveWrapper = () => {
+            if(isWrapperActive.value) {                
+                wrapper.value.style.display = 'none'
+                isWrapperActive.value = false
+            }
+        }
+
+        const activeMenu = () => {
+            if(!isMenuActive.value){
+                menuContainer.value.style.display = 'flex'
+                isMenuActive.value = true
             }
         }
 
@@ -104,9 +131,12 @@ export default defineComponent({
             pageViewer,
             wrapper,
             toMain,
-            toggleWrapper,
+            activeWrapper,
+            deactiveWrapper,
             isWrapperActive,
-            chapter
+            chapter,
+            menuContainer,
+            activeMenu
         }
     }
 })
