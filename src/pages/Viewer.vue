@@ -12,45 +12,10 @@
                     {{ chapter?.title }}
                 </h3>
             </div> -->
-            </div>
-            <div class="wrapper__menu" @click="activeMenu">
-                <MenuDotsIcon  />
-                <div class="wrapper__container" ref="menuContainer">
-                    <h3 class="wrapper__container-title">Resolución De pagína</h3>
-                    <div class="wrapper__input-group">
-                        <label class="wrapper__label">
-                            <input class="wrapper__input" type="radio" name="orientation">
-                            Vertical
-                            <span class="wrapper__radio-button"></span>
-                        </label>
-                        <label class="wrapper__label">
-                            <input class="wrapper__input" type="radio" name="orientation">
-                            Horizontal
-                            <span class="wrapper__radio-button"></span>
-                        </label>
-                    </div>
-                    <h3 class="wrapper__container-title">Dirección De Lectura</h3>
-                    <div class="wrapper__input-group">
-                        <div class="wrapper__input-group">
-                            <label class="wrapper__label">
-                                <input class="wrapper__input" type="radio" name="quality">
-                                Bajo
-                                <span class="wrapper__radio-button"></span>
-                            </label>
-                            <label class="wrapper__label">
-                                <input class="wrapper__input" type="radio" name="quality">
-                                Medio
-                                <span class="wrapper__radio-button"></span>
-                            </label>
-                            <label class="wrapper__label">
-                                <input class="wrapper__input" type="radio" name="quality">
-                                Alto
-                                <span class="wrapper__radio-button"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> 
+
+            <MenuViewer />
+
             <div class="wrapper__comments">
                 <CommentsIcon />
             </div>
@@ -65,13 +30,13 @@ import { defineComponent, onMounted, ref } from 'vue'
 import { useTo } from '../hooks'
 import { useRouter, Router } from 'vue-router'
 import { ChapterI } from '../interfaces'
-import MenuDotsIcon from '../components/MenuDotsIcon.vue'
 import CommentsIcon from '../components/CommentsIcon.vue'
+import MenuViewer from '../layout/MenuViewer.vue'
 
 export default defineComponent({
     name: 'viewer',
     components: {
-        MenuDotsIcon, CommentsIcon
+        CommentsIcon, MenuViewer
     },
     setup() {
         const route = useRoute()
@@ -80,9 +45,7 @@ export default defineComponent({
         const wrapper = ref<HTMLDivElement>()
         const router: Router = useRouter()
         const isWrapperActive = ref<boolean>(false)
-        const isMenuActive = ref<boolean>(false)
         const chapter = ref<ChapterI>()
-        const menuContainer = ref();
 
         const { toMain } = useTo(router)
 
@@ -115,13 +78,6 @@ export default defineComponent({
             }
         }
 
-        const activeMenu = () => {
-            if(!isMenuActive.value){
-                menuContainer.value.style.display = 'flex'
-                isMenuActive.value = true
-            }
-        }
-
         onMounted(async () => {
             getPagesByChapter()
         })
@@ -135,8 +91,6 @@ export default defineComponent({
             deactiveWrapper,
             isWrapperActive,
             chapter,
-            menuContainer,
-            activeMenu
         }
     }
 })
