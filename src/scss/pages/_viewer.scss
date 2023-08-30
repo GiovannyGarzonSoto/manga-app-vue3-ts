@@ -93,9 +93,13 @@
 
         &__input-group {
             display: flex;
-            padding: 2rem 1.6rem;
+            padding: .8rem 1.6rem;
             width: 100%;
             justify-content: center;
+        }
+
+        &__input-group:last-of-type{
+            color: red;
         }
 
         &__label {
