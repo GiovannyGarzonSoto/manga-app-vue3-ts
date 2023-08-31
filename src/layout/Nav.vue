@@ -1,7 +1,7 @@
 <template>
   <!-- <nav class="nav" ref="banner" :class="{ 'animated-banner': showBanner }"> -->
   <nav ref="nav" class="nav animated-banner">
-    <MenuIcon />
+    <MenuIcon @click="toggleMenu(!isMenuActive)" />
     <a @click="toMain" class="nav__logo"><img src="../../public/logo-full.png" alt="logo"></a>
     <a @click="toMain" class="nav__item">Reciente</a>
     <a @click="toTopRanking" class="nav__item">Destacados</a>
@@ -10,10 +10,12 @@
     <a @click="toFavorites" class="nav__item">Favoritos</a>
     <a class="nav__item" href="https://www.shonenjump.com/mangaplus/whatismangaplus/" target="__blank">Sobre</a>
     <form @submit="toMangaList(searchInputText)" ref="searchInput" class="nav__search">
-      <input class="nav__search-input input" v-model="searchInputText" maxlength="24" type="text" placeholder="Buscar por serie o autor">
+      <input class="nav__search-input input" v-model="searchInputText" maxlength="24" type="text"
+        placeholder="Buscar por serie o autor">
     </form>
     <SearchIcon @click="toMangaList()" />
   </nav>
+  <Menu v-if="isMenuActive" />
 </template>
 
 <script lang="ts">
@@ -22,12 +24,12 @@ import { useRoute, useRouter } from 'vue-router'
 import MenuIcon from '../components/MenuIcon.vue'
 import SearchIcon from '../components/SearchIcon.vue'
 import { useTo } from '../hooks'
-import '../scss/animations/_slideToLeft.scss'
+import Menu from '../layout/Menu.vue'
 
 export default defineComponent({
   name: 'Nav',
   components: {
-    MenuIcon, SearchIcon
+    MenuIcon, SearchIcon, Menu
   },
   setup() {
     const route = useRoute()
@@ -35,6 +37,7 @@ export default defineComponent({
     const nav = ref<HTMLElement>(null)
     const searchInputText = ref<string>('')
     const searchInput = ref<HTMLInputElement>(null)
+    const isMenuActive = ref<boolean>(false)
 
     const { toTopRanking, toFavorites, toMain, toMangaList } = useTo(router)
 
@@ -45,6 +48,16 @@ export default defineComponent({
       }
       if (route.path === '/manga-list') {
         searchInput.value.style.opacity = "0"
+      }
+    }
+
+    const toggleMenu = (toogle) => {
+      console.log('toggleMenu')
+      if (isMenuActive.value === false) {
+        isMenuActive.value = toogle
+      }
+      if(isMenuActive.value === true){
+        isMenuActive.value = toogle
       }
     }
 
@@ -60,7 +73,9 @@ export default defineComponent({
       toMain,
       toFavorites,
       toTopRanking,
-      searchInputText
+      searchInputText,
+      toggleMenu,
+      isMenuActive
     }
   }
 })

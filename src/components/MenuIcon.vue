@@ -15,6 +15,7 @@ export default defineComponent({
     display: none;
     width: 2.4rem;
     height: 2.4rem;
+    z-index: 4;
 
     @media (width <=760px) {
         display: block;
