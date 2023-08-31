@@ -49,7 +49,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      nav.value.style.setProperty('--before-bg-image', 'url("public/header-banner.png")');
+      nav.value.style.setProperty('--before-bg-image', 'url("../../public/header-banner.png")');
       isMain()
     })
 
