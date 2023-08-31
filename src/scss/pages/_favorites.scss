@@ -18,9 +18,10 @@
         padding-top: 2.4rem;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(8rem, 11rem));
-        justify-content: start;
+        justify-content: center;
         column-gap: .8rem;
         row-gap: 1.6rem;
+        column-gap: 2.4rem;
         padding: 1.6rem 6rem 4rem 6rem;
     }
 
