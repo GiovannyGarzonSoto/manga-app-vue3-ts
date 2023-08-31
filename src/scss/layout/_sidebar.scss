@@ -1,34 +1,33 @@
-.container{
+.container {
     flex: .6;
     display: flex;
     // height: ;
     // width: 100vw;
     justify-content: flex-start;
-    flex-direction: column;
     padding: 0 0 0 1.6rem;
     background-color: #0D0D0D;
     gap: .8rem;
 
-    @media (width <= 800px) {
+    @media (width <=800px) {
         display: none;
     }
 }
 
-.social-media{
+.social-media {
     display: flex;
     width: 100%;
     flex-direction: column;
     justify-content: center;
     gap: .8rem;
-     
-    &__item{
+
+    &__item {
         border-radius: 8px 0 0 8px;
         transition: transform .2s ease-in;
     }
 
-    &__item:nth-child(1){
+    &__item:nth-child(1) {
         height: 5rem;
-        background-color:  #333a53; 
+        background-color: #333a53;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -39,23 +38,23 @@
         text-align: center;
     }
 
-    &__item:nth-child(2):hover{
+    &__item:nth-child(2):hover {
         transform: scale(1.04);
         transform-origin: center;
     }
 
-    &__discord-box{
+    &__discord-box {
         margin: .4rem;
         padding: 1.4rem;
         flex-grow: 1;
-        
-        &:hover{
+
+        &:hover {
             background-color: #7289DA;
             border-radius: 4px;
             position: relative;
             color: transparent;
-            
-            &::after{
+
+            &::after {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -70,18 +69,18 @@
         }
     }
 
-    &__facebook-box{
+    &__facebook-box {
         margin: .4rem;
         padding: 1.4rem;
         flex-grow: 1;
 
-        &:hover{
+        &:hover {
             background-color: #69688F;
             border-radius: 4px;
             position: relative;
             color: transparent;
 
-            &::after{
+            &::after {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -95,8 +94,8 @@
             }
         }
     }
-    
-    &__item:nth-child(2){
+
+    &__item:nth-child(2) {
         height: 8rem;
         width: 100%;
         background-image: url('../public/creators-banner.jpg');
@@ -106,21 +105,23 @@
     }
 }
 
-.ranking{
-    height: 100%;
+.ranking {
+    height: 40vh;
     background-color: #010101;
-    border-radius: 24px 0 0 24px; 
+    border-radius: 24px 0 0 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    &-box{
+
+
+    &-box {
         margin-top: -20rem;
         width: 100%;
         height: 64vh;
         padding-top: 1.6rem;
 
-        &__header{
+        &__header {
             display: flex;
             width: 100%;
             gap: .8rem;
@@ -129,21 +130,21 @@
             background: linear-gradient(to right, #AA0E18 0%, #aa0e18ce 48%, #771218 100%); //#AA0E18;
         }
 
-        &__logo{
+        &__logo {
             width: 2.4rem;
             background-image: url('../public/flame.svg');
             background-repeat: no-repeat;
             background-size: contain;
         }
 
-        &__title{
+        &__title {
             flex-grow: 1;
             font-size: 2rem;
             font-weight: 500;
             color: white;
         }
 
-        &__titles{
+        &__titles {
             background-color: #771218;
             padding: 1.6rem 0;
             display: flex;
@@ -152,9 +153,13 @@
             justify-content: flex-start;
             align-items: center;
             gap: .4rem;
+
+            @media (width <=800px) {
+                flex-direction: row;
+            }
         }
 
-        &__item{
+        &__item {
             width: 110%;
             height: 100%;
             transform: scale(.9);
@@ -166,13 +171,14 @@
             position: relative;
             padding: 1.6rem 1.2rem;
 
-            &:hover{
+            &:hover {
                 background-color: #690F13
             }
 
-            &:nth-child(1),&:nth-child(2),
+            &:nth-child(1),
+            &:nth-child(2),
             &:nth-child(3) {
-                &::after{
+                &::after {
                     width: 2.8rem;
                     height: 2.8rem;
                     content: '';
@@ -188,26 +194,26 @@
                 }
             }
 
-            &:nth-child(1) {    
-                &::after{
+            &:nth-child(1) {
+                &::after {
                     background-image: url('../public/first.png');
                 }
             }
-    
+
             &:nth-child(2) {
-                &::after{
+                &::after {
                     background-image: url('../public/second.png');
                 }
             }
-    
+
             &:nth-child(3) {
-                &::after{
+                &::after {
                     background-image: url('../public/third.png');
                 }
             }
         }
 
-        &__image{
+        &__image {
             height: 14rem;
             width: 10rem;
             // padding: 1.2rem;
@@ -215,7 +221,7 @@
             background-size: contain;
             position: relative;
 
-            &::before{
+            &::before {
                 width: 2.8rem;
                 height: 2.8rem;
                 content: '';
@@ -223,12 +229,12 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                transform: translate(80%,-50%);
+                transform: translate(80%, -50%);
                 background-color: var(--color-black);
             }
         }
 
-        &__info{
+        &__info {
             width: 100%;
             height: 100%;
             display: flex;
@@ -237,22 +243,22 @@
             color: var(--color-white);
         }
 
-        &__name{
+        &__name {
             font-size: 1.6rem;
             font-weight: 500;
         }
 
-        &__name-hover{
+        &__name-hover {
             color: var(--color-yellow)
         }
 
-        &__author{
+        &__author {
             color: var(--color-small-impact);
             font-size: 1.2rem;
             font-weight: 400;
         }
 
-        &__views{
+        &__views {
             line-height: 2.5;
             display: flex;
             justify-content: flex-start;
@@ -260,7 +266,7 @@
             gap: .4rem;
         }
 
-        &__logo-ranking{
+        &__logo-ranking {
             width: 1.2rem;
             height: 1.2rem;
             background-image: url('../public/flame.svg');
