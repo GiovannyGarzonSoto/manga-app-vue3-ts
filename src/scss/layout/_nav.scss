@@ -109,6 +109,7 @@
     animation: slideToLeft 100s infinite linear;
     background-repeat: repeat;
     background-size: unset;
+    background: black;
     background-image: var(--before-bg-image);
     z-index: -1;
 }
