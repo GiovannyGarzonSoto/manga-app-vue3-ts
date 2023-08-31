@@ -2,7 +2,7 @@
 Este proyecto consta de un clon de la pagina para leer mangas online <a href="https://mangaplus.shueisha.co.jp/updates">MangaPlus</a>.
 Esta realizado con vue3, y scss.
 
-<a href="https://master--amazing-caramel-5e90cf.netlify.app/">https://master--amazing-caramel-5e90cf.netlify.app/</a>.
+<a target="_blank" href="https://master--amazing-caramel-5e90cf.netlify.app/">https://master--amazing-caramel-5e90cf.netlify.app/</a>.
 - 
 
 <img src="public/main.png" alt="screenshotv3" />
