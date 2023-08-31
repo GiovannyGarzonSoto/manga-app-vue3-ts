@@ -10,9 +10,9 @@
     height: 10rem;
     gap: 4rem;
 
-    // @media (width <= 1100px) {
-    //     gap: 1.4rem;
-    // }
+    @media (width <= 1100px) {
+        gap: 1.4rem;
+    }
 
     &__logo{
         align-self: flex-start;
@@ -31,9 +31,9 @@
         position: relative;
         text-decoration: none;
 
-        // @media (width <= 920px) {
-        //     font-size: .8rem;
-        // }
+        @media (width <= 900px) {
+            font-size: 1.2rem;
+        }
 
         &:hover{
             color: var(--color-yellow);

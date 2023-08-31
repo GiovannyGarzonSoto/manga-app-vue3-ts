@@ -1,11 +1,17 @@
 .container{
-    flex-grow: .6;
+    flex: .6;
     display: flex;
+    // height: ;
+    // width: 100vw;
     justify-content: flex-start;
     flex-direction: column;
     padding: 0 0 0 1.6rem;
     background-color: #0D0D0D;
     gap: .8rem;
+
+    @media (width <= 800px) {
+        display: none;
+    }
 }
 
 .social-media{
