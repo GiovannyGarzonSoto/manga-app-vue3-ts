@@ -49,8 +49,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      // nav.value.style.backgroundImage = 'url(./../public/header-banner.png)'
-      // nav.value.style.animation = 'slideToLeft 100s infinite linear'
+      nav.value.style.setProperty('--before-bg-image', 'url("./../public/header-banner.png")');
       isMain()
     })
 
