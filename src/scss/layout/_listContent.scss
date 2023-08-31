@@ -33,6 +33,10 @@
         column-gap: .8rem;
         row-gap: 1.6rem;
         padding: 1.6rem 6rem 4rem 6rem;
+
+        @media (width <= 500px) {
+            padding: .4rem;
+        }
     }
 
     &__search{
