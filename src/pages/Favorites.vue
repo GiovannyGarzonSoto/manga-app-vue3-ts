@@ -1,5 +1,5 @@
 <template>
-    <Nav/>
+    <Nav />
 
     <section class="favorites">
         <h2 class="favorites__header">
@@ -7,7 +7,7 @@
         </h2>
 
         <main class="favorites__titles">
-            <div  class="favorites__title-manga" v-for="manga in filteredFavs">
+            <div class="favorites__title-manga" v-for="manga in filteredFavs">
                 <img @click="toTitle(manga._id)" :src="`${manga.images.cover}`" class="favorites__image">
                 <div @click="removeAction(manga._id)" class="favorites__actions">
                     <span class="favorites__actions--remove">Retirar</span>
@@ -16,7 +16,7 @@
         </main>
     </section>
 
-    <Footer/>
+    <Footer />
 </template>
 
 <script lang="ts">
@@ -54,7 +54,7 @@ export default defineComponent({
             filterFavs()
         }
 
-        onMounted(async() => {
+        onMounted(async () => {
             await getMangas()
             getFavs()
             filterFavs()

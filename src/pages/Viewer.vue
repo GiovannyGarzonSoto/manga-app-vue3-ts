@@ -5,47 +5,48 @@
             </div>
         </div>
         <div ref="wrapper" class="wrapper">
-            <div class="wrapper__logo" @click="toMain">
+            <div class="wrapper__logo-box" @click="toMain">
                 <img class="wrapper__img" src="../../public/logo.png" alt="logo">
-                <!-- <div class="wrapper_container">
+                <div class="wrapper_container">
                 <h3 v-if="chapter" class="wrapper__title">
-                    {{ chapter?.title }}
+                    {{ chapter.title }}
                 </h3>
-            </div> -->
+            </div>
             </div>
 
             <div class="wrapper__menu" @click="activeMenu">
-        <MenuDotsIcon />
-        <div class="wrapper__container" ref="menuContainer">
-            <h3 class="wrapper__container-title">Resolución De pagína</h3>
-            <div class="wrapper__input-group">
-                <label class="wrapper__label">
-                    <input class="wrapper__input" type="radio" name="orientation" checked>
-                    Vertical
-                    <span class="wrapper__radio-button"></span>
-                </label>
-                <label class="wrapper__label">
-                    <input class="wrapper__input" type="radio" name="orientation">
-                    Horizontal
-                    <span class="wrapper__radio-button"></span>
-                </label>
-            </div>
-            <h3 class="wrapper__container-title">Dirección De Lectura</h3>
-            <div class="wrapper__input-group">
-                <div class="wrapper__input-group">
-                    <label class="wrapper__label" v-for="(option, i) in qualityOptions" :key="i">
-                        <input @click="changeQuality(option.value)" class="wrapper__input" :value="option.value" type="radio" name="quality" v-model="selectedQuality">
-                        {{ option.label }}
-                        <span class="wrapper__radio-button"></span>
-                    </label>
+                <MenuDotsIcon />
+                <div class="wrapper__container" ref="menuContainer">
+                    <h3 class="wrapper__container-title">Resolución De pagína</h3>
+                    <div class="wrapper__input-group">
+                        <label class="wrapper__label">
+                            <input class="wrapper__input" type="radio" name="orientation" checked>
+                            Vertical
+                            <span class="wrapper__radio-button"></span>
+                        </label>
+                        <label class="wrapper__label">
+                            <input class="wrapper__input" type="radio" name="orientation">
+                            Horizontal
+                            <span class="wrapper__radio-button"></span>
+                        </label>
+                    </div>
+                    <h3 class="wrapper__container-title">Dirección De Lectura</h3>
+                    <div class="wrapper__input-group">
+                        <div class="wrapper__input-group">
+                            <label class="wrapper__label" v-for="(option, i) in qualityOptions" :key="i">
+                                <input @click="changeQuality(option.value)" class="wrapper__input" :value="option.value"
+                                    type="radio" name="quality" v-model="selectedQuality">
+                                {{ option.label }}
+                                <span class="wrapper__radio-button"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-            <div class="wrapper__comments">
+            <!-- <div class="wrapper__comments">
                 <CommentsIcon />
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -75,7 +76,7 @@ export default defineComponent({
         const chapter = ref<ChapterI>()
         const isMenuActive = ref<boolean>(false)
         const menuContainer = ref()
-        const selectedQuality = ref('high')
+        const selectedQuality = ref('medium')
         const { toMain } = useTo(router)
         const qualityOptions = [
             { label: 'Bajo', value: 'low' },

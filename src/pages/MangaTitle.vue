@@ -132,12 +132,14 @@ export default defineComponent({
         }
 
         const renderManga = () => {
-            portrait.value.style.backgroundImage = `url(${manga.value.images.cover})`
-            mangaTitle.value.style.background = `url(${manga.value.images.background}) rgba(0, 0, 0) `
+            const {urlCompressed: portraitCompress} = useCompressImg(manga.value.images.cover, 80)
+            const {urlCompressed: mangaTitleCompress} = useCompressImg(manga.value.images.background, 80)
+            portrait.value.style.backgroundImage = `url(${portraitCompress})`
+            mangaTitle.value.style.background = `url(${mangaTitleCompress}) rgba(0, 0, 0) `
             setTimeout(() => {
                 pageChapter.value.forEach((e, i) =>{
                     const url = chapters.value[i].pageImage
-                    const { urlCompressed } = useCompressImg(url, 5)
+                    const { urlCompressed } = useCompressImg(url, 20)
                     setTimeout(() => {
                         e.style.backgroundImage = `url(${urlCompressed})`
                     }, 1200*i)
