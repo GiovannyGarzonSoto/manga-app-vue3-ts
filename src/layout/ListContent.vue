@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    <Loader v-if="!isContentLoaded" />
 </template>
 
 <script lang="ts">
@@ -22,16 +23,21 @@ import { watch, defineComponent, onMounted, ref } from 'vue';
 import { MangaI } from '../interfaces'
 import { axios } from '../config'
 import { useRouter, Router, useRoute } from 'vue-router'
-import { useTo } from '../hooks';
+import { useTo } from '../hooks'
+import Loader from '../layout/Loader.vue'
 
 export default defineComponent({
     name: 'listContent',
+    components: {
+        Loader
+    },
     setup() {
         const router: Router = useRouter()
         const route = useRoute()
         const mangas = ref<MangaI[]>([])
         const searchInput = ref<string>('')
         const filteredMangas = ref<MangaI[]>([])
+        const isContentLoaded = ref<boolean>(false)
 
         const { toTitle } = useTo(router)
 
@@ -72,13 +78,17 @@ export default defineComponent({
         onMounted(() => {
             checkSearchParam()
             getMangas()
+            setTimeout(() => {
+                isContentLoaded.value = true
+            }, 1000)
         })
 
         return {
             mangas,
             searchInput,
             toTitle,
-            filteredMangas
+            filteredMangas,
+            isContentLoaded
         }
     }
 })

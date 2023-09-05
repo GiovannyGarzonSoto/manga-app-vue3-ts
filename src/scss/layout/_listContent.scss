@@ -27,10 +27,11 @@
     }
 
     &__main{
+        height: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(8rem, 11rem));
-        justify-content: center;
-        column-gap: .8rem;
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 14rem));
+        place-content: center;
+        column-gap: 1.6rem;
         row-gap: 1.6rem;
         padding: 1.6rem 6rem 4rem 6rem;
 
@@ -48,7 +49,7 @@
         background-color: inherit;
 
         &-input{
-            width: 88vw;
+            width: 90vw;
             height: 5.6rem;
             border: none;
             border-bottom: 1px solid #adadad;
@@ -85,7 +86,7 @@
 
     &__title-manga{
         margin-top: 2.4rem;
-        height: 20rem;
+        height: 24rem;
 
         .list-content__image{
             transition: transform .2s linear;

@@ -16,11 +16,14 @@
         </main>
     </section>
 
+    <Loader v-if="!isContentLoaded" />
+
     <Footer />
 </template>
 
 <script lang="ts">
 import Nav from '../layout/Nav.vue'
+import Loader from '../layout/Loader.vue'
 import Footer from '../layout/Footer.vue'
 import { defineComponent, ref, onMounted } from 'vue'
 import { axios } from '../config'
@@ -30,12 +33,13 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
     name: 'favorites',
     components: {
-        Nav, Footer
+        Nav, Footer, Loader
     },
     setup() {
         const router = useRouter()
         const mangas = ref([])
         const filteredFavs = ref([])
+        const isContentLoaded = ref<boolean>(false)
 
         const { toTitle } = useTo(router)
         const { favs, getFavs, removeFav } = useFavs()
@@ -58,6 +62,9 @@ export default defineComponent({
             await getMangas()
             getFavs()
             filterFavs()
+            setTimeout(() => {
+                isContentLoaded.value = true
+            }, 400)
         })
 
         return {
@@ -66,7 +73,8 @@ export default defineComponent({
             removeFav,
             filteredFavs,
             removeAction,
-            toTitle
+            toTitle,
+            isContentLoaded
         }
     }
 })
