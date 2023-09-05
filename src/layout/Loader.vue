@@ -31,7 +31,7 @@ export default defineComponent({
         height: 8rem;
         background: linear-gradient(90deg, rgba(220,9,20,0) 0%, rgb(187, 20, 28) 50%, rgba(220,9,20,0) 100%);
         display: flex;
-        font-weight: 800;
+        font-weight: 600;
         justify-content: center;
         align-items: center;
         font-size: 2.4rem;

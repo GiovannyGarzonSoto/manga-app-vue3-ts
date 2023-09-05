@@ -9,5 +9,9 @@
 
     &__logo{
         width: 18rem;
+
+        @media (width <= 800px) {
+            width: 14rem;
+        }
     }
 }

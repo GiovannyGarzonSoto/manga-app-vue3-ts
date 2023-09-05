@@ -35,8 +35,17 @@
         row-gap: 1.6rem;
         padding: 1.6rem 6rem 4rem 6rem;
 
+
+        @media (width <= 700px) {
+            padding: .8rem;
+        }
+
         @media (width <= 500px) {
             padding: .4rem;
+        }
+
+        @media (width <= 400px) {
+            padding: .2rem;
         }
     }
 

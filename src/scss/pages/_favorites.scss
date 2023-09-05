@@ -24,6 +24,18 @@
         row-gap: 2rem;
         column-gap: 2.4rem;
         padding: 1.6rem 6rem 4rem 6rem;
+
+        @media (width <= 800px) {
+            padding: .8rem;
+        }
+
+        @media (width <= 500px) {
+            padding: .4rem;
+        }
+
+        @media (width <= 400px) {
+            padding: .2rem;
+        }
     }
 
     &__title-manga{

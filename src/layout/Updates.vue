@@ -16,7 +16,7 @@
         <div ref="info" class="title__info">
           <span class="title__number">#{{ chapter.number }}</span>
           <span class="title__premiere">Hoy</span>
-          <span class="title__chapter">Capitulo {{ chapter.number }} {{ chapter.title }}</span>
+          <span class="title__chapter">Capítulo {{ chapter.number }} {{ chapter.title }}</span>
         </div>
       </div>
     </section>
