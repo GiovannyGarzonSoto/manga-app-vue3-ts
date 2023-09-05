@@ -5,8 +5,8 @@
             </div>
         </div>
         <div ref="wrapper" class="wrapper" @click="toggleWrapper">
-            <div class="wrapper__logo-box" @click="toMain">
-                <img class="wrapper__img" src="../../public/logo.png" alt="logo">
+            <div class="wrapper__logo-box">
+                <img @click="toMain" class="wrapper__img" src="../../public/logo.png" alt="logo">
                 <!-- <div class="wrapper_container">
                 <h3 v-if="chapter" class="wrapper__title">
                     {{ chapter.title }}
