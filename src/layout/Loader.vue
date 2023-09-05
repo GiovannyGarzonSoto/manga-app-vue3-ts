@@ -26,10 +26,10 @@ export default defineComponent({
 
     &__title{
         margin-top: 4rem;
-        color: var(--color-small-impact);
+        color: white;
         width: 100%;
         height: 8rem;
-        background: linear-gradient(90deg, rgba(220,9,20,0) 0%, rgba(220,9,20,1) 50%, rgba(220,9,20,0) 100%);
+        background: linear-gradient(90deg, rgba(220,9,20,0) 0%, rgb(187, 20, 28) 50%, rgba(220,9,20,0) 100%);
         display: flex;
         font-weight: 800;
         justify-content: center;
