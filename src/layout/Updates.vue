@@ -33,7 +33,6 @@ export default {
   name: 'Updates',
   setup() {
     const router = useRouter()
-
     const chapters = ref([])
     const box = ref(null)
     const info = ref(null)
@@ -67,11 +66,8 @@ export default {
       removeMangaMask,
       toTitle,
       box,
-      info
+      info,
     }
   }
 }
-
 </script>
-
-<!-- <style src="../scss/layout/_updates.scss"></style> -->

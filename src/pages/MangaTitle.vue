@@ -140,6 +140,7 @@ export default defineComponent({
             const { urlCompressed: portraitCompress } = useCompressImg(manga.value.images.cover, 60)
             const { urlCompressed: mangaTitleCompress } = useCompressImg(manga.value.images.background, 60)
             portrait.value.style.backgroundImage = `url(${portraitCompress})`
+            console.log(manga.value._id)
             mangaTitle.value.style.background = `url(${mangaTitleCompress}) rgba(0, 0, 0) `
             setTimeout(() => {
                 pageChapter.value.forEach((e, i) => {
