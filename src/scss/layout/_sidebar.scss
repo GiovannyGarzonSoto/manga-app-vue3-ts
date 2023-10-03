@@ -197,19 +197,19 @@
 
             &:nth-child(1) {
                 &::after {
-                    background-image: url('../public/first.png');
+                    background-image: url('https://res.cloudinary.com/dlejpqwlh/image/upload/v1696354935/first_leptg7.png');
                 }
             }
 
             &:nth-child(2) {
                 &::after {
-                    background-image: url('../public/second.png');
+                    background-image: url('https://res.cloudinary.com/dlejpqwlh/image/upload/v1696354935/second_j4qlzi.png');
                 }
             }
 
             &:nth-child(3) {
                 &::after {
-                    background-image: url('../public/third.png');
+                    background-image: url('https://res.cloudinary.com/dlejpqwlh/image/upload/v1696354935/third_vjramk.png');
                 }
             }
         }

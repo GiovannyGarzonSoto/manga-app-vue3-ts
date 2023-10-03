@@ -62,7 +62,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      nav.value.style.setProperty('--before-bg-image', 'url("header-banner.png")');
+      nav.value.style.setProperty('--before-bg-image', 'url("https://res.cloudinary.com/dlejpqwlh/image/upload/v1696354935/header-banner_lna8uh.png")');
       isMain()
     })
 
