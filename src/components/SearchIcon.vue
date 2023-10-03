@@ -1,5 +1,5 @@
 <template>
-    <img class="search-icon" src="../../public/search.svg" />
+    <img class="search-icon" src="https://res.cloudinary.com/dlejpqwlh/image/upload/v1696355673/search_iopqyz.svg" />
 </template>
 
 <script lang="ts">
