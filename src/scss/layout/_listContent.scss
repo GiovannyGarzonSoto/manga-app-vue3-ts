@@ -67,7 +67,6 @@
             background: linear-gradient(90deg, #0D0D0D 0%, rgba(25,25,25,1) 49%, #0D0D0D 100%) !important; //!important           
             caret-color: #adadad;
             color: #adadad;
-            // background-image: url('search.svg');
             padding: .8rem;
             position: relative;
             text-align: center;
@@ -85,7 +84,7 @@
             &::after{
                 content: "";
                 position: absolute;
-                background-image: url('../../../public/search.svg');
+                background-image: url('https://res.cloudinary.com/dlejpqwlh/image/upload/v1696355673/search_iopqyz.svg');
                 width: 2.4rem;
                 height: 2.4rem;
 
