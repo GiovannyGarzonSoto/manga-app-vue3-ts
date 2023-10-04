@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test de prueba > probando componente 1`] = `
+"<div class=\\"loader\\">
+  <p class=\\"loader__title\\">Cargando...</p>
+</div>"
+`;
