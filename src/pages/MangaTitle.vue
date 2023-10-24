@@ -1,5 +1,5 @@
 <template>
-    <Nav />
+    <Nav ref="nav" />
 
     <div class="content">
         <section ref="mangaTitle" class="manga-title">
@@ -83,7 +83,7 @@ import Nav from '../layout/Nav.vue'
 import Footer from '../layout/Footer.vue'
 import { defineComponent, onMounted, ref } from 'vue'
 import { axios } from '../config'
-import { Router, useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { MangaI, AuthorI, ChapterI } from '../interfaces'
 import { useFavs, useCompressImg, useTo } from '../hooks'
 import BooksIcon from '../components/BooksIcon.vue'
@@ -98,7 +98,7 @@ export default defineComponent({
     },
     setup() {
         const route = useRoute()
-        const router: Router = useRouter()
+        const router = useRouter()
         const chapters = ref<ChapterI[]>()
         const manga = ref<MangaI>()
         const portrait = ref<HTMLImageElement>()
@@ -106,12 +106,13 @@ export default defineComponent({
         const pageChapter = ref<HTMLDivElement[]>([])
         const author = ref<AuthorI>()
         const isContentLoaded = ref<boolean>(false)
+        const nav = ref<HTMLDivElement>()
 
         const { checkFavs, addToFavs, removeFav, getFavs, isFav } = useFavs()
         const { toViewer } = useTo(router)
 
         const getManga = async () => {
-            const { data } = await axios.get(`/manga/${route.params.id}`)
+            const { data } = await axios.get(`/manga/${route?.params.id}`)
             manga.value = data.data
             await getChaptersByManga()
             chapters.value.forEach(async (chapter, i) => {
@@ -137,11 +138,12 @@ export default defineComponent({
         }
 
         const renderManga = () => {
-            const { urlCompressed: portraitCompress } = useCompressImg(manga.value.images.cover, 60)
-            const { urlCompressed: mangaTitleCompress } = useCompressImg(manga.value.images.background, 60)
-            portrait.value.style.backgroundImage = `url(${portraitCompress})`
-            console.log(manga.value._id)
-            mangaTitle.value.style.background = `url(${mangaTitleCompress}) rgba(0, 0, 0) `
+            const { urlCompressed: portraitCompress } = useCompressImg(manga.value?.images.cover, 60)
+            const { urlCompressed: mangaTitleCompress } = useCompressImg(manga.value?.images.background, 60)
+            if (portrait.value?.style) {
+                portrait.value.style.backgroundImage = `url(${portraitCompress})`
+            }
+            mangaTitle.value.style.background = `url(${mangaTitleCompress}) rgba(0, 0, 0)`
             setTimeout(() => {
                 pageChapter.value.forEach((e, i) => {
                     const url = chapters.value[i].pageImage
@@ -162,13 +164,13 @@ export default defineComponent({
         }
 
         onMounted(async () => {
-            window.scrollTo(0, 0)
-            Promise.allSettled([
-                getManga(),
-                getAuthor()
-            ])
+            if (nav.value instanceof HTMLElement) {
+                nav.value?.scrollIntoView({ behavior: 'smooth' });
+            }
+            await getManga()
+            await getAuthor()
             getFavs()
-            checkFavs(manga.value._id)
+            checkFavs(manga.value?._id)
             renderManga()
             setTimeout(() => {
                 isContentLoaded.value = true
@@ -188,7 +190,8 @@ export default defineComponent({
             isFav,
             removeFav,
             toViewer,
-            isContentLoaded
+            isContentLoaded,
+            nav
         }
     }
 })

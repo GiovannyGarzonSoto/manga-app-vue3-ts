@@ -42,11 +42,11 @@ export default defineComponent({
     const { toTopRanking, toFavorites, toMain, toMangaList } = useTo(router)
 
     const isMain = () => {
-      if (route.path !== '/') {
+      if (route?.path !== '/') {
         nav.value.style.background = "rgba(0, 0, 0, 1)"
         nav.value.style.background = "linear-gradient(to bottom, black 16%, #0D0D0D 100%)";
       }
-      if (route.path === '/manga-list') {
+      if (route?.path === '/manga-list') {
         searchInput.value.style.opacity = "0"
       }
     }
