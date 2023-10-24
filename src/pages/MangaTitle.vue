@@ -163,8 +163,10 @@ export default defineComponent({
 
         onMounted(async () => {
             window.scrollTo(0, 0)
-            await getManga()
-            await getAuthor()
+            Promise.allSettled([
+                getManga(),
+                getAuthor()
+            ])
             getFavs()
             checkFavs(manga.value._id)
             renderManga()
