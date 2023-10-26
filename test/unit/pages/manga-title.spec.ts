@@ -13,4 +13,8 @@ describe('<MangaTitle> unit tests', () => {
         const div = wrapper.find('div.content')
         assert.ok(div.exists())
     })
+
+    test('should be fetch a mangaTitle', async () => {
+        
+    })
 })
