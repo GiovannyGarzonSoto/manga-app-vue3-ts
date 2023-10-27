@@ -27,6 +27,7 @@
             </div>
 
         </section>
+        
         <div class="manga-title__content">
             <div v-if="manga" class="manga-title__chapters">
                 <div class="manga-title__title-chapters">

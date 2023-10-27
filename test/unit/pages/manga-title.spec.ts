@@ -14,7 +14,5 @@ describe('<MangaTitle> unit tests', () => {
         assert.ok(div.exists())
     })
 
-    test('should be fetch a mangaTitle', async () => {
-        
-    })
+    
 })
