@@ -1,5 +1,5 @@
 import Loader from '../../src/layout/Loader.vue'
-import {describe, expect, test} from 'vitest'
+import {describe, expect, test, it} from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 
 describe('setup test suit example', () => {
