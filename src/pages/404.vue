@@ -25,14 +25,14 @@ export default defineComponent({
 <style lang="scss">
     .error404{
         background: rgb(13,13,13);
-        height: 70vh;
+        height: 60vh;
         width:100%;
         display: flex;
         justify-content: center;
         align-items: center;
 
         &__img{
-            height:50vh;
+            height: 45vh;
         }
     }
 </style>
